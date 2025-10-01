@@ -26,9 +26,9 @@ public class Visita {
 
     private LocalDateTime horarioVisita;
 
-    private StatosVisita statosVisita;
+    private StatusVisita statosVisita;
 
-
-
+    @Column(length = 350)
+    private String observacao;
 
 }

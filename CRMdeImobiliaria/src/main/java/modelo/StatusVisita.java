@@ -1,5 +1,5 @@
 package modelo;
 
-public enum StatosVisita {
+public enum StatusVisita {
     AGENDADA, REALIZADA, CANCELADA
 }
