@@ -15,3 +15,7 @@
 .cliente-box {
   -fx-background-color: #ccc7c7;
 }
+
+.grid {
+  -fx-margin-top: 5%;
+}

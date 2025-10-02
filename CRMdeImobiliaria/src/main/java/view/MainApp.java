@@ -2,6 +2,7 @@ package view;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -99,18 +100,28 @@ public class MainApp extends Application {
         scrollPane.setFitToWidth(true);
 
         GridPane grid = new GridPane();
-        grid.add(scrollPane,5,3);
+        grid.getStyleClass().add("grid");
+        grid.setAlignment(Pos.TOP_CENTER);
+        grid.add(scrollPane,1,2);
 
-        HBox barraPesquisa = new HBox(50);
+
+        HBox barraPesquisa = new HBox(200);
+        barraPesquisa.setAlignment(Pos.TOP_CENTER);
         barraPesquisa.setPadding(new Insets(5));
         barraPesquisa.getStyleClass().add("barra-pesquisa");
         Label tituloLabel = new Label("Cliente");
 
-        barraPesquisa.getChildren().addAll(tituloLabel);
+        Button bntAdd = new Button("Adicionar");
 
-        grid.add(barraPesquisa,1,2);
+        barraPesquisa.getChildren().addAll(tituloLabel,bntAdd);
 
-        Button bnt
+        grid.add(barraPesquisa,1,1);
+
+
+
+        bntAdd.setOnAction(e-> System.out.println("aaaaaaaaa"));
+
+
         return grid;
     }
 
