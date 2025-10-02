@@ -1,0 +1,17 @@
+.button {
+  -fx-font-size: 18px; /* aumenta a letra */
+  -fx-padding: 10 20 10 20; /* deixa o botão mais largo */
+}
+
+.label {
+  -fx-font-size: 20px;
+}
+
+.barra-pesquisa {
+  -fx-background-color: #808080;
+  -fx-border-color: #cccccc;
+}
+
+.cliente-box {
+  -fx-background-color: #ccc7c7;
+}
