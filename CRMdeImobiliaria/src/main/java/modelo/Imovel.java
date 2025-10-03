@@ -20,7 +20,7 @@ public class Imovel {
 
     private StatusImovel statusImovel;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "idCorretor", referencedColumnName = "id")
     private Corretor Corretor;
 }

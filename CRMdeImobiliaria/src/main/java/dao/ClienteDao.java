@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ClienteDao {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("PersistenciaPU");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenciaPU");
 
     public void add(Cliente valor) {
         EntityManager em = emf.createEntityManager();

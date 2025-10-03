@@ -14,10 +14,9 @@ public class Cliente extends Pessoa{
         super(nome, cpf);
     }
 
-    public boolean validarCpf(){
-
+    static public boolean validarCpf(String cpf){
         boolean validado = false;
-        char[] cpfArray = super.getCpf().toCharArray();
+        char[] cpfArray = cpf.toCharArray();
         int[] digitoVerif = new int[2];
         int[] cpfInt  = new int[11];
         for (int x=0; x<11;x++){

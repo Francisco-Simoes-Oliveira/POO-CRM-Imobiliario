@@ -4,14 +4,12 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Cliente;
+import service.ClienteService;
 
 import java.util.List;
 
@@ -77,7 +75,7 @@ public class MainApp extends Application {
         sideMenu.setPadding(new Insets(10));
         sideMenu.setStyle("-fx-background-color: #cccccc;");
 
-        Button btnPagina1 = new Button("Clinte");
+        Button btnPagina1 = new Button("Cliente");
         Button btnPagina2 = new Button("Página 2");
         Button btnPagina3 = new Button("Página 3");
 
@@ -98,7 +96,7 @@ public class MainApp extends Application {
                 new Cliente("Maria", "", "maria@email.com", ""),
                 new Cliente("João", "", "joao@email.com", "")
         );
-        System.out.println(clientes.get(0).validarCpf());
+
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(10));
         vbox.getStyleClass().add("lista-clientes");
@@ -147,10 +145,49 @@ public class MainApp extends Application {
     private void formAddCliente(Stage principalStage){
         Stage formCliente = new Stage();
         GridPane gridForm = new GridPane();
-        Scene scene = new Scene(gridForm,350,400);
+        Scene scene = new Scene(gridForm,450,300);
 
-        Label nomeLabel = new Label("Nome*");
+        Label nomeLabel = new Label("Nome*   ");
         TextField nomeField  = new TextField();
+
+        Label cpfLabel = new Label("CPF(Apenas numeros)*   ");
+        TextField cpfField  = new TextField();
+
+        Label emailLabel = new Label("Email   ");
+        TextField emailField  = new TextField();
+
+        Label telefoneLabel = new Label("telefone  ");
+        TextField telefoneField  = new TextField();
+
+        Label esp = new Label("      ");
+        gridForm.setAlignment(Pos.TOP_CENTER);
+        gridForm.add(esp,1,0);
+        gridForm.add(nomeLabel,0,0);
+        gridForm.add(nomeField,0,1);
+        gridForm.add(cpfLabel,2,0);
+        gridForm.add(cpfField,2,1);
+        gridForm.add(emailLabel,0,2);
+        gridForm.add(emailField,0,3);
+        gridForm.add(telefoneLabel,2,2);
+        gridForm.add(telefoneField,2,3);
+
+
+        Button salvar = new Button("SALVAR");
+        salvar.setOnAction(e->{
+            if(!nomeField.getText().isEmpty() && !cpfField.getText().isEmpty()) {
+                if (Cliente.validarCpf(cpfField.getText())) {
+                    ClienteService service = new ClienteService();
+                    service.add(nomeField.getText(), cpfField.getText(),
+                            emailField.getText(), telefoneField.getText());
+                }else mostrarAlerta(formCliente,"Erro", "CPF inválido!");;
+            }else {
+                mostrarAlerta(formCliente,"Erro", "O campo nome e cpf são obrigatórios!");
+            }
+            formCliente.close();
+        });
+        Label obs = new Label("Os campos com * são obrigatórios");
+        gridForm.add(obs,0,4,1,4);
+        gridForm.add(salvar,2, 4);
 
 
         formCliente.setScene(scene);
@@ -161,6 +198,14 @@ public class MainApp extends Application {
         formCliente.showAndWait();
     }
 
+    public void mostrarAlerta(Stage stage,String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.initOwner(stage);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null); // sem cabeçalho
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
 
     public static void main(String[] args) {
         launch(args); // inicia a aplicação
