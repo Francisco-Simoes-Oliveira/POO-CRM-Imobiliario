@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Cliente;
 
@@ -20,32 +22,6 @@ public class MainApp extends Application {
         // === Criar o layout principal ===
         BorderPane borderPane = new BorderPane();
 
-        // === Topo (menu) usando HBox ===
-        HBox topMenu = new HBox(10); // 10 = espaçamento entre elementos
-        topMenu.setPadding(new Insets(10));
-        topMenu.setStyle("-fx-background-color: #336699;");
-
-        Button btnHome = new Button("Home");
-        Button btnSobre = new Button("Sobre");
-        Button btnSair = new Button("Sair");
-
-        topMenu.getChildren().addAll(btnHome, btnSobre, btnSair);
-        borderPane.setTop(topMenu);
-
-        // === Esquerda (menu lateral) usando VBox ===
-        VBox sideMenu = new VBox(10);
-        sideMenu.setPrefWidth(200);
-
-        sideMenu.setPadding(new Insets(10));
-        sideMenu.setStyle("-fx-background-color: #cccccc;");
-
-        Button btnPagina1 = new Button("Clinte");
-        Button btnPagina2 = new Button("Página 2");
-        Button btnPagina3 = new Button("Página 3");
-
-        sideMenu.getChildren().addAll(btnPagina1, btnPagina2, btnPagina3);
-        borderPane.setLeft(sideMenu);
-
         // === Centro (conteúdo) ===
         BorderPane contentPane = new BorderPane();
         Label label = new Label("Conteúdo inicial");
@@ -53,13 +29,15 @@ public class MainApp extends Application {
 
         borderPane.setCenter(contentPane);
 
-        // === Ações dos botões ===
-        btnPagina1.setOnAction(e -> contentPane.setCenter(criarListaCliente()));
-        btnPagina2.setOnAction(e -> contentPane.setCenter(new Label("Página 2")));
-        btnPagina3.setOnAction(e -> contentPane.setCenter(new Label("Página 3")));
-        btnHome.setOnAction(e -> contentPane.setCenter(new Label("Página Inicial")));
-        btnSobre.setOnAction(e -> contentPane.setCenter(new Label("Sobre o programa")));
-        btnSair.setOnAction(e -> stage.close());
+        // === Topo (menu) usando HBox ===
+        HBox topMenu = headerPage(contentPane,stage);
+        borderPane.setTop(topMenu);
+
+        // === Esquerda (menu lateral) usando VBox ===
+        VBox sideMenu = menuPage(contentPane,stage);
+        borderPane.setLeft(sideMenu);
+
+
         // === Cena e Stage ===
         Scene scene = new Scene(borderPane, 800, 600);
 
@@ -73,13 +51,54 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    private GridPane criarListaCliente() {
+    private HBox headerPage(BorderPane contentPane,Stage stage){
+        HBox topMenu = new HBox(10); // 10 = espaçamento entre elementos
+        topMenu.setPadding(new Insets(10));
+        topMenu.setStyle("-fx-background-color: #336699;");
+
+        Button btnHome = new Button("Home");
+        Button btnSobre = new Button("Sobre");
+        Button btnSair = new Button("Sair");
+
+        topMenu.getChildren().addAll(btnHome, btnSobre, btnSair);
+
+        // === Ações dos botões ===
+        btnHome.setOnAction(e -> contentPane.setCenter(new Label("Página Inicial")));
+        btnSobre.setOnAction(e -> contentPane.setCenter(new Label("Sobre o programa")));
+        btnSair.setOnAction(e -> stage.close());
+
+        return topMenu;
+    }
+
+    private VBox menuPage(BorderPane contentPane,Stage stage){
+        VBox sideMenu = new VBox(10);
+        sideMenu.setPrefWidth(200);
+
+        sideMenu.setPadding(new Insets(10));
+        sideMenu.setStyle("-fx-background-color: #cccccc;");
+
+        Button btnPagina1 = new Button("Clinte");
+        Button btnPagina2 = new Button("Página 2");
+        Button btnPagina3 = new Button("Página 3");
+
+        sideMenu.getChildren().addAll(btnPagina1, btnPagina2, btnPagina3);
+
+        // === Ações dos botões ===
+        btnPagina1.setOnAction(e -> contentPane.setCenter(criarListaCliente(stage)));
+        btnPagina2.setOnAction(e -> contentPane.setCenter(new Label("Página 2")));
+        btnPagina3.setOnAction(e -> contentPane.setCenter(new Label("Página 3")));
+
+
+        return sideMenu;
+    }
+
+    private GridPane criarListaCliente(Stage stage) {
         List<Cliente> clientes = List.of(
-                new Cliente("Francisco", "", "francisco@email.com", ""),
+                new Cliente("Francisco", "11570209928", "francisco@email.com", ""),
                 new Cliente("Maria", "", "maria@email.com", ""),
                 new Cliente("João", "", "joao@email.com", "")
         );
-
+        System.out.println(clientes.get(0).validarCpf());
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(10));
         vbox.getStyleClass().add("lista-clientes");
@@ -119,11 +138,29 @@ public class MainApp extends Application {
 
 
 
-        bntAdd.setOnAction(e-> System.out.println("aaaaaaaaa"));
+        bntAdd.setOnAction(e-> formAddCliente(stage));
 
 
         return grid;
     }
+
+    private void formAddCliente(Stage principalStage){
+        Stage formCliente = new Stage();
+        GridPane gridForm = new GridPane();
+        Scene scene = new Scene(gridForm,350,400);
+
+        Label nomeLabel = new Label("Nome*");
+        TextField nomeField  = new TextField();
+
+
+        formCliente.setScene(scene);
+
+        formCliente.initOwner(principalStage);
+        formCliente.initModality(Modality.APPLICATION_MODAL);
+
+        formCliente.showAndWait();
+    }
+
 
     public static void main(String[] args) {
         launch(args); // inicia a aplicação

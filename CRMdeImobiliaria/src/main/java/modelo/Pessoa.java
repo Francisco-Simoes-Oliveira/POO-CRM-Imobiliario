@@ -27,6 +27,11 @@ public abstract class Pessoa {
         this.telefone = telefone;
     }
 
+    public Pessoa(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
     public Long getId() {
         return id;
     }
