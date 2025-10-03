@@ -3,6 +3,8 @@ package service;
 import dao.ClienteDao;
 import modelo.Cliente;
 
+import java.util.List;
+
 public class ClienteService {
     private ClienteDao dao = new ClienteDao();
 
@@ -14,5 +16,9 @@ public class ClienteService {
     public void add(String nome, String cpf){
         Cliente cliente = new Cliente(nome, cpf, null, null);
         dao.add(cliente);
+    }
+
+    public List<Cliente> buscarTodos(){
+       return dao.buscaTodos();
     }
 }

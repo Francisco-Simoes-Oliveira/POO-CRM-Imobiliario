@@ -91,11 +91,13 @@ public class MainApp extends Application {
     }
 
     private GridPane criarListaCliente(Stage stage) {
-        List<Cliente> clientes = List.of(
+        ClienteService service = new ClienteService();
+        List<Cliente> clientes = service.buscarTodos();
+    /*            List.of(
                 new Cliente("Francisco", "11570209928", "francisco@email.com", ""),
                 new Cliente("Maria", "", "maria@email.com", ""),
                 new Cliente("João", "", "joao@email.com", "")
-        );
+        );*/
 
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(10));

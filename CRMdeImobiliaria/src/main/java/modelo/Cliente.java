@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "cliente")
 public class Cliente extends Pessoa{
 
+    public Cliente() {}
+
     public Cliente(String nome, String cpf, String email, String telefone) {
         super(nome,cpf, email,telefone);
     }
@@ -13,6 +15,8 @@ public class Cliente extends Pessoa{
     public Cliente(String nome, String cpf) {
         super(nome, cpf);
     }
+
+
 
     static public boolean validarCpf(String cpf){
         boolean validado = false;

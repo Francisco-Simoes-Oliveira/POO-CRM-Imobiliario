@@ -15,7 +15,7 @@ public class ClienteDao {
             em.getTransaction().begin();
             em.persist(valor);
             em.getTransaction().commit();
-
+            System.out.println("Salvo com sucesso");
         }finally{
             em.close();
         }
@@ -37,7 +37,7 @@ public class ClienteDao {
     public List<Cliente> buscaTodos(){
         EntityManager em = emf.createEntityManager();
 
-        List<Cliente> lista = em.createQuery("SELECT *FROM Cliente").getResultList();
+        List<Cliente> lista = em.createQuery("SELECT c FROM Cliente c").getResultList();
         em.close();
 
         return lista;
