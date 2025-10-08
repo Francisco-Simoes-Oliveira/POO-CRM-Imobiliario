@@ -9,7 +9,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Cliente;
+import modelo.Imovel;
 import service.ClienteService;
+import service.ImovelService;
 
 import java.util.List;
 
@@ -145,8 +147,8 @@ public class MainApp extends Application {
     }
 
     private GridPane listaImovelPage(Stage stage) {
-        ClienteService service = new ClienteService();
-        List<Cliente> clientes = service.buscarTodos();
+        ImovelService service = new ImovelService();
+        List<Imovel> imoveis = service.buscarTodos();
     /*            List.of(
                 new Cliente("Francisco", "11570209928", "francisco@email.com", ""),
                 new Cliente("Maria", "", "maria@email.com", ""),
@@ -155,15 +157,15 @@ public class MainApp extends Application {
 
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(10));
-        vbox.getStyleClass().add("lista-clientes");
+        vbox.getStyleClass().add("lista-imoveis");
 
-        for (Cliente cliente : clientes) {
+        for (Imovel imovel : imoveis) {
             HBox clienteBox = new HBox(20);
             clienteBox.setPadding(new Insets(5));
             clienteBox.getStyleClass().add("cliente-box");
 
-            Label nomeLabel = new Label(cliente.getNome());
-            Label emailLabel = new Label(cliente.getEmail());
+            Label nomeLabel = new Label(imovel.getNome());
+            Label emailLabel = new Label(imovel.getEmail());
 
             clienteBox.getChildren().addAll(nomeLabel, emailLabel);
             vbox.getChildren().add(clienteBox);

@@ -30,4 +30,40 @@ public class Imovel {
         this.statusImovel = statusImovel;
         Corretor = corretor;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public Comodos getComodos() {
+        return comodos;
+    }
+
+    public void setComodos(Comodos comodos) {
+        this.comodos = comodos;
+    }
+
+    public StatusImovel getStatusImovel() {
+        return statusImovel;
+    }
+
+    public void setStatusImovel(StatusImovel statusImovel) {
+        this.statusImovel = statusImovel;
+    }
+
+    public Corretor getCorretor() {
+        return Corretor;
+    }
+
+    public void setCorretor(Corretor corretor) {
+        Corretor = corretor;
+    }
 }
