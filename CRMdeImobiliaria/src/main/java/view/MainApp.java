@@ -160,15 +160,15 @@ public class MainApp extends Application {
         vbox.getStyleClass().add("lista-imoveis");
 
         for (Imovel imovel : imoveis) {
-            HBox clienteBox = new HBox(20);
-            clienteBox.setPadding(new Insets(5));
-            clienteBox.getStyleClass().add("cliente-box");
-
+            HBox imovelBox = new HBox(20);
+            imovelBox.setPadding(new Insets(5));
+            imovelBox.getStyleClass().add("imovel-box");
+/*
             Label nomeLabel = new Label(imovel.getNome());
             Label emailLabel = new Label(imovel.getEmail());
 
             clienteBox.getChildren().addAll(nomeLabel, emailLabel);
-            vbox.getChildren().add(clienteBox);
+            vbox.getChildren().add(clienteBox);*/
         }
 
         ScrollPane scrollPane = new ScrollPane(vbox);
@@ -184,7 +184,7 @@ public class MainApp extends Application {
         barraPesquisa.setAlignment(Pos.TOP_CENTER);
         barraPesquisa.setPadding(new Insets(5));
         barraPesquisa.getStyleClass().add("barra-pesquisa");
-        Label tituloLabel = new Label("Cliente");
+        Label tituloLabel = new Label("Imovel");
 
         Button bntAdd = new Button("Adicionar");
 
@@ -237,11 +237,11 @@ public class MainApp extends Application {
                     ClienteService service = new ClienteService();
                     service.add(nomeField.getText(), cpfField.getText(),
                             emailField.getText(), telefoneField.getText());
+                    formCliente.close();
                 }else mostrarAlerta(formCliente,"Erro", "CPF inválido!");;
             }else {
                 mostrarAlerta(formCliente,"Erro", "O campo nome e cpf são obrigatórios!");
             }
-            formCliente.close();
         });
         Label obs = new Label("Os campos com * são obrigatórios");
         gridForm.add(obs,0,4,1,4);

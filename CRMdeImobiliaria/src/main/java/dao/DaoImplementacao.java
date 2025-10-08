@@ -1,18 +1,21 @@
 package dao;
 
-import javax.persistence.*;
-import modelo.Cliente;
 
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 
-public class ClienteDao extends DaoImplementacao<Cliente,Long>{
-    public ClienteDao() {
-        super(Cliente.class);
-    }
-/*
+public abstract class DaoImplementacao<T, ID> implements DaoGenerico<T,ID> {
+    private final Class<T> tipo;
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenciaPU");
 
-    public void add(Cliente valor) {
+    public DaoImplementacao(Class<T> tipo) {
+        this.tipo = tipo;
+    }
+
+    public void add(T valor) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -24,7 +27,7 @@ public class ClienteDao extends DaoImplementacao<Cliente,Long>{
         }
     }
 
-    public void alter(Cliente valor) {
+    public void alter(T valor) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -37,37 +40,37 @@ public class ClienteDao extends DaoImplementacao<Cliente,Long>{
     }
 
 
-    public List<Cliente> buscaTodos(){
+    public List<T> buscaTodos(){
         EntityManager em = emf.createEntityManager();
-
-        List<Cliente> lista = em.createQuery("SELECT c FROM Cliente c").getResultList();
+        String sql = "SELECT t FROM "+tipo.getName()+" t ";
+        List<T> lista = em.createQuery(sql).getResultList();
         em.close();
 
         return lista;
     }
 
-    public Cliente buscaPorId(long id) {
+    public T buscaPorId(ID id) {
         EntityManager em = emf.createEntityManager();
-        Cliente cat = em.find(Cliente.class, id);
+        T cat = em.find(tipo, id);
         em.close();
         return cat;
     }
 
-    public List<Cliente> buscarPorNomePars(String nome){
+    public List<T> buscarPorNomePars(String nome){
         EntityManager em = emf.createEntityManager();
-        String sql = "SELECT c FROM Cliente c WHERE LOWER(c.nome) LIKE LOWER(:nome) ";
-        List<Cliente> lista = em.createQuery(sql, Cliente.class).setParameter("nome", nome).getResultList();
+        String sql = "SELECT t FROM "+tipo.getName()+" t WHERE LOWER(c.nome) LIKE LOWER(:nome) ";
+        List<T> lista = em.createQuery(sql, tipo).setParameter("nome", nome).getResultList();
         em.close();
 
         return lista;
     }
 
-    public void removerPorId(long id) {
+    public void removerPorId(ID id) {
         EntityManager em = emf.createEntityManager();
-        Cliente cat = buscaPorId(id);
+        T cat = buscaPorId(id);
         if(cat != null) {
             em.remove(cat);
         }
         em.close();
-    }*/
+    }
 }
