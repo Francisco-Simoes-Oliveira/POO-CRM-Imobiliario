@@ -76,21 +76,75 @@ public class MainApp extends Application {
         sideMenu.setStyle("-fx-background-color: #cccccc;");
 
         Button btnPagina1 = new Button("Cliente");
-        Button btnPagina2 = new Button("Página 2");
+        Button btnPagina2 = new Button("Imovel");
         Button btnPagina3 = new Button("Página 3");
 
         sideMenu.getChildren().addAll(btnPagina1, btnPagina2, btnPagina3);
 
         // === Ações dos botões ===
-        btnPagina1.setOnAction(e -> contentPane.setCenter(criarListaCliente(stage)));
-        btnPagina2.setOnAction(e -> contentPane.setCenter(new Label("Página 2")));
+        btnPagina1.setOnAction(e -> contentPane.setCenter(listaClientePage(stage)));
+        btnPagina2.setOnAction(e -> contentPane.setCenter(listaImovelPage(stage)));
         btnPagina3.setOnAction(e -> contentPane.setCenter(new Label("Página 3")));
 
 
         return sideMenu;
     }
 
-    private GridPane criarListaCliente(Stage stage) {
+    private GridPane listaClientePage(Stage stage) {
+        ClienteService service = new ClienteService();
+        List<Cliente> clientes = service.buscarTodos();
+    /*            List.of(
+                new Cliente("Francisco", "11570209928", "francisco@email.com", ""),
+                new Cliente("Maria", "", "maria@email.com", ""),
+                new Cliente("João", "", "joao@email.com", "")
+        );*/
+
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(10));
+        vbox.getStyleClass().add("lista-clientes");
+
+        for (Cliente cliente : clientes) {
+            HBox clienteBox = new HBox(20);
+            clienteBox.setPadding(new Insets(5));
+            clienteBox.getStyleClass().add("cliente-box");
+
+            Label nomeLabel = new Label(cliente.getNome());
+            Label emailLabel = new Label(cliente.getEmail());
+
+            clienteBox.getChildren().addAll(nomeLabel, emailLabel);
+            vbox.getChildren().add(clienteBox);
+        }
+
+        ScrollPane scrollPane = new ScrollPane(vbox);
+        scrollPane.setFitToWidth(true);
+
+        GridPane grid = new GridPane();
+        grid.getStyleClass().add("grid");
+        grid.setAlignment(Pos.TOP_CENTER);
+        grid.add(scrollPane,1,2);
+
+
+        HBox barraPesquisa = new HBox(200);
+        barraPesquisa.setAlignment(Pos.TOP_CENTER);
+        barraPesquisa.setPadding(new Insets(5));
+        barraPesquisa.getStyleClass().add("barra-pesquisa");
+        Label tituloLabel = new Label("Cliente");
+
+        Button bntAdd = new Button("Adicionar");
+
+        barraPesquisa.getChildren().addAll(tituloLabel,bntAdd);
+
+        grid.add(barraPesquisa,1,1);
+
+
+
+        bntAdd.setOnAction(e-> formAddCliente(stage));
+
+
+        return grid;
+    }
+
+    private GridPane listaImovelPage(Stage stage) {
         ClienteService service = new ClienteService();
         List<Cliente> clientes = service.buscarTodos();
     /*            List.of(

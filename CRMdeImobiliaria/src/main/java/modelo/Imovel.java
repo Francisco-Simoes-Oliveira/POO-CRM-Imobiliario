@@ -23,4 +23,11 @@ public class Imovel {
     @ManyToOne
     @JoinColumn(name = "idCorretor", referencedColumnName = "id")
     private Corretor Corretor;
+
+    public Imovel(Double preco, Comodos comodos, StatusImovel statusImovel, Corretor corretor) {
+        this.preco = preco;
+        this.comodos = comodos;
+        this.statusImovel = statusImovel;
+        Corretor = corretor;
+    }
 }
