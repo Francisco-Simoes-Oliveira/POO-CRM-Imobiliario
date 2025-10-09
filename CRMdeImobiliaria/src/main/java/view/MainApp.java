@@ -9,7 +9,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Cliente;
+import modelo.Endereco;
 import modelo.Imovel;
+import org.json.JSONObject;
 import service.ClienteService;
 import service.ImovelService;
 
@@ -194,7 +196,7 @@ public class MainApp extends Application {
 
 
 
-        bntAdd.setOnAction(e-> formAddCliente(stage));
+        bntAdd.setOnAction(e-> formAddImovel(stage));
 
 
         return grid;
@@ -256,6 +258,67 @@ public class MainApp extends Application {
         formCliente.showAndWait();
     }
 
+    private void formAddImovel(Stage principalStage){
+        Stage formCliente = new Stage();
+        GridPane gridForm = new GridPane();
+        Scene scene = new Scene(gridForm,450,300);
+
+        Label cidadeLabel = new Label("Cidade*   ");
+        TextField cidadeField  = new TextField();
+
+        Label cepLabel = new Label("CEP(Apenas numeros)*   ");
+        TextField cepField  = new TextField();
+        Button btnCep = new Button();
+
+        Label emailLabel = new Label("Email   ");
+        TextField emailField  = new TextField();
+
+        Label telefoneLabel = new Label("telefone  ");
+        TextField telefoneField  = new TextField();
+
+        Label esp = new Label("      ");
+        gridForm.setAlignment(Pos.TOP_CENTER);
+        gridForm.add(esp,1,0);
+        gridForm.add(cidadeLabel,0,0);
+        gridForm.add(cidadeField,0,1);
+        gridForm.add(cepLabel,2,0);
+        gridForm.add(cepField,2,1);
+        gridForm.add(btnCep,3,1);
+        gridForm.add(emailLabel,0,2);
+        gridForm.add(emailField,0,3);
+        gridForm.add(telefoneLabel,2,2);
+        gridForm.add(telefoneField,2,3);
+
+        btnCep.setOnAction(e->{
+            JSONObject ojt = Endereco.buscaViaCep(cepField.getText());
+            cidadeField.setText(ojt.getString("localidade"));
+        });
+
+        Button salvar = new Button("SALVAR");
+        salvar.setOnAction(e->{
+            if(!cidadeLabel.getText().isEmpty() && !cepLabel.getText().isEmpty()) {
+                if (Cliente.validarCpf(cepLabel.getText())) {
+                    ClienteService service = new ClienteService();
+                    service.add(cidadeField.getText(), cepField.getText(),
+                            emailField.getText(), telefoneField.getText());
+                    formCliente.close();
+                }else mostrarAlerta(formCliente,"Erro", "CPF inválido!");;
+            }else {
+                mostrarAlerta(formCliente,"Erro", "O campo nome e cpf são obrigatórios!");
+            }
+        });
+        Label obs = new Label("Os campos com * são obrigatórios");
+        gridForm.add(obs,0,4,1,4);
+        gridForm.add(salvar,2, 4);
+
+
+        formCliente.setScene(scene);
+
+        formCliente.initOwner(principalStage);
+        formCliente.initModality(Modality.APPLICATION_MODAL);
+
+        formCliente.showAndWait();
+    }
     public void mostrarAlerta(Stage stage,String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.initOwner(stage);
@@ -264,6 +327,8 @@ public class MainApp extends Application {
         alert.setContentText(mensagem);
         alert.showAndWait();
     }
+
+
 
     public static void main(String[] args) {
         launch(args); // inicia a aplicação
