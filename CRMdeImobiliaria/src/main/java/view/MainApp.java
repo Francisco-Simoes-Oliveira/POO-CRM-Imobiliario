@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import service.ClienteService;
 import service.ImovelService;
 
+
+
 import java.util.List;
 
 public class MainApp extends Application {
@@ -270,11 +272,11 @@ public class MainApp extends Application {
         TextField cepField  = new TextField();
         Button btnCep = new Button();
 
-        Label emailLabel = new Label("Email   ");
-        TextField emailField  = new TextField();
+        Label ufLabel = new Label("UF   ");
+        TextField ufField  = new TextField();
 
-        Label telefoneLabel = new Label("telefone  ");
-        TextField telefoneField  = new TextField();
+        Label precoLabel = new Label("Preço R$  ");
+        TextField precoField  = new TextField();
 
         Label esp = new Label("      ");
         gridForm.setAlignment(Pos.TOP_CENTER);
@@ -284,14 +286,15 @@ public class MainApp extends Application {
         gridForm.add(cepLabel,2,0);
         gridForm.add(cepField,2,1);
         gridForm.add(btnCep,3,1);
-        gridForm.add(emailLabel,0,2);
-        gridForm.add(emailField,0,3);
-        gridForm.add(telefoneLabel,2,2);
-        gridForm.add(telefoneField,2,3);
+        gridForm.add(ufLabel,0,2);
+        gridForm.add(ufField,0,3);
+        gridForm.add(precoLabel,2,2);
+        gridForm.add(precoField,2,3);
 
         btnCep.setOnAction(e->{
             JSONObject ojt = Endereco.buscaViaCep(cepField.getText());
             cidadeField.setText(ojt.getString("localidade"));
+            ufField.setText(ojt.getString("uf"));
         });
 
         Button salvar = new Button("SALVAR");
@@ -300,7 +303,7 @@ public class MainApp extends Application {
                 if (Cliente.validarCpf(cepLabel.getText())) {
                     ClienteService service = new ClienteService();
                     service.add(cidadeField.getText(), cepField.getText(),
-                            emailField.getText(), telefoneField.getText());
+                            ufField.getText(), precoField.getText());
                     formCliente.close();
                 }else mostrarAlerta(formCliente,"Erro", "CPF inválido!");;
             }else {
