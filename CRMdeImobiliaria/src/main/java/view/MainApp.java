@@ -1,6 +1,7 @@
 package view;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,7 +17,7 @@ import service.ClienteService;
 import service.ImovelService;
 
 
-
+import java.io.IOException;
 import java.util.List;
 
 public class MainApp extends Application {
@@ -205,7 +206,20 @@ public class MainApp extends Application {
     }
 
     private void formAddCliente(Stage principalStage){
-        Stage formCliente = new Stage();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/formCliente.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage formCliente = new Stage();
+            formCliente.setScene(scene);
+            formCliente.initOwner(principalStage);
+            formCliente.initModality(Modality.APPLICATION_MODAL);
+            formCliente.setTitle("Novo Cliente");
+            formCliente.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /* Stage formCliente = new Stage();
         GridPane gridForm = new GridPane();
         Scene scene = new Scene(gridForm,450,300);
 
@@ -242,9 +256,9 @@ public class MainApp extends Application {
                     service.add(nomeField.getText(), cpfField.getText(),
                             emailField.getText(), telefoneField.getText());
                     formCliente.close();
-                }else mostrarAlerta(formCliente,"Erro", "CPF inválido!");;
+                }else mostrarAlerta("Erro", "CPF inválido!");;
             }else {
-                mostrarAlerta(formCliente,"Erro", "O campo nome e cpf são obrigatórios!");
+                mostrarAlerta("Erro", "O campo nome e cpf são obrigatórios!");
             }
         });
         Label obs = new Label("Os campos com * são obrigatórios");
@@ -257,7 +271,7 @@ public class MainApp extends Application {
         formCliente.initOwner(principalStage);
         formCliente.initModality(Modality.APPLICATION_MODAL);
 
-        formCliente.showAndWait();
+        formCliente.showAndWait();*/
     }
 
     private void formAddImovel(Stage principalStage){
@@ -305,9 +319,9 @@ public class MainApp extends Application {
                     service.add(cidadeField.getText(), cepField.getText(),
                             ufField.getText(), precoField.getText());
                     formCliente.close();
-                }else mostrarAlerta(formCliente,"Erro", "CPF inválido!");;
+                }else mostrarAlerta("Erro", "CPF inválido!");;
             }else {
-                mostrarAlerta(formCliente,"Erro", "O campo nome e cpf são obrigatórios!");
+                mostrarAlerta("Erro", "O campo nome e cpf são obrigatórios!");
             }
         });
         Label obs = new Label("Os campos com * são obrigatórios");
@@ -322,12 +336,12 @@ public class MainApp extends Application {
 
         formCliente.showAndWait();
     }
-    public void mostrarAlerta(Stage stage,String titulo, String mensagem) {
+    public static void mostrarAlerta(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.initOwner(stage);
         alert.setTitle(titulo);
-        alert.setHeaderText(null); // sem cabeçalho
+        alert.setHeaderText(null);
         alert.setContentText(mensagem);
+        alert.initModality(Modality.APPLICATION_MODAL); // impede interação até fechar
         alert.showAndWait();
     }
 
