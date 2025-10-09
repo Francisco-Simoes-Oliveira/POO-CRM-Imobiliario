@@ -18,6 +18,7 @@ import service.ImovelService;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 public class MainApp extends Application {
@@ -207,7 +208,12 @@ public class MainApp extends Application {
 
     private void formAddCliente(Stage principalStage){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/formCliente.fxml"));
+            System.out.println(getClass().getResource("/sceneBuilder/formCliente.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sceneBuilder/formCliente.fxml"));
+
+            URL url = getClass().getResource("/sceneBuilder/formCliente.fxml");
+            System.out.println("Caminho encontrado: " + url);
+
             Scene scene = new Scene(loader.load());
             Stage formCliente = new Stage();
             formCliente.setScene(scene);
