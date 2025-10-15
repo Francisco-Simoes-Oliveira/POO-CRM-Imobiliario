@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml"
+            stylesheets="/css/style.css">
+
+   <!-- Sidebar -->
+   <left>
+      <VBox spacing="10" prefWidth="220" styleClass="sidebar">
+         <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+               <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Circle radius="15" style="-fx-fill: #13a4ec;"/>
+            <Label text="CRM Imobiliário" styleClass="logo-label"/>
+         </HBox>
+
+         <VBox spacing="5">
+            <padding>
+               <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Imóveis" styleClass="nav-button-active"/>
+            <Button text="Clientes" styleClass="nav-button"/>
+            <Button text="Visitas" styleClass="nav-button"/>
+            <Button text="Propostas" styleClass="nav-button"/>
+            <Button text="Contratos" styleClass="nav-button"/>
+            <Button text="Relatórios" styleClass="nav-button"/>
+         </VBox>
+
+         <VBox alignment="BOTTOM_LEFT">
+            <padding>
+               <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Configurações" styleClass="nav-button"/>
+         </VBox>
+      </VBox>
+   </left>
+
+   <!-- Top Header -->
+   <top>
+      <HBox alignment="CENTER_RIGHT" spacing="20" styleClass="header">
+         <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+         </padding>
+         <Label text="Dashboard" styleClass="header-title" HBox.hgrow="ALWAYS"/>
+
+         <TextField promptText="Buscar..." prefWidth="200" styleClass="search-field"/>
+
+         <Button styleClass="icon-button" text="🔔"/>
+         <ImageView fitWidth="40" fitHeight="40" styleClass="avatar"/>
+      </HBox>
+   </top>
+
+   <!-- Main content -->
+   <center>
+      <VBox spacing="20">
+         <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+         </padding>
+
+         <!-- Cards -->
+         <HBox spacing="15">
+            <VBox alignment="CENTER" styleClass="card">
+               <Label text="Total de Imóveis" styleClass="card-title"/>
+               <Label text="120" styleClass="card-value"/>
+            </VBox>
+
+            <VBox alignment="CENTER" styleClass="card">
+               <Label text="Propostas em Andamento" styleClass="card-title"/>
+               <Label text="35" styleClass="card-value"/>
+            </VBox>
+
+            <VBox alignment="CENTER" styleClass="card">
+               <Label text="Contratos Fechados" styleClass="card-title"/>
+               <Label text="15" styleClass="card-value"/>
+            </VBox>
+
+            <VBox alignment="CENTER" styleClass="card">
+               <Label text="Taxa de Conversão" styleClass="card-title"/>
+               <Label text="12.5%" styleClass="card-value"/>
+            </VBox>
+         </HBox>
+
+         <!-- Recent Activities -->
+         <VBox spacing="10" styleClass="card">
+            <Label text="Atividades Recentes" styleClass="section-title"/>
+            <ListView fx:id="listAtividades"/>
+         </VBox>
+
+      </VBox>
+   </center>
+</BorderPane>

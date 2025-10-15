@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -25,37 +26,38 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        // === Criar o layout principal ===
-        BorderPane borderPane = new BorderPane();
+        try {
+            // debug: ver se o resource existe no classpath
+            URL fxmlUrl = getClass().getResource("/sceneBuilder/MainApp.fxml");
+            System.out.println("FXML URL -> " + fxmlUrl);
 
-        // === Centro (conteúdo) ===
-        BorderPane contentPane = new BorderPane();
-        Label label = new Label("Conteúdo inicial");
-        contentPane.setCenter(label);
+            if (fxmlUrl == null) {
+                System.err.println("ERRO: MainApp.fxml NÃO encontrado no classpath. Verifique o caminho e resources.");
+                // ajuda visual para o dev: listar a pasta resources (opcional)
+            }
 
-        borderPane.setCenter(contentPane);
+            FXMLLoader loader = (fxmlUrl != null) ? new FXMLLoader(fxmlUrl) : new FXMLLoader();
+            Parent root = loader.load(); // aqui vai jogar a exceção se algo estiver errado
 
-        // === Topo (menu) usando HBox ===
-        HBox topMenu = headerPage(contentPane,stage);
-        borderPane.setTop(topMenu);
+            Scene scene = new Scene(root);
+            URL css = getClass().getResource("/css/style.css");
+            if (css != null) scene.getStylesheets().add(css.toExternalForm());
+            else System.out.println("Aviso: style.css não encontrado.");
 
-        // === Esquerda (menu lateral) usando VBox ===
-        VBox sideMenu = menuPage(contentPane,stage);
-        borderPane.setLeft(sideMenu);
+            stage.setTitle("Programa");
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
 
-
-        // === Cena e Stage ===
-        Scene scene = new Scene(borderPane, 800, 600);
-
-
-        scene.getStylesheets().add(
-                getClass().getResource("/css/style.css").toExternalForm()
-        );
-        stage.setTitle("Programa");
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+        } catch (IOException ex) {
+            System.err.println("IOException ao carregar FXML:");
+            ex.printStackTrace();
+        } catch (RuntimeException ex) {
+            System.err.println("RuntimeException ao carregar FXML (verificar fx:controller, campos @FXML, namespaces):");
+            ex.printStackTrace();
+        }
     }
+
 
     private HBox headerPage(BorderPane contentPane,Stage stage){
         HBox topMenu = new HBox(10); // 10 = espaçamento entre elementos
@@ -208,11 +210,7 @@ public class MainApp extends Application {
 
     private void formAddCliente(Stage principalStage){
         try {
-            System.out.println(getClass().getResource("/sceneBuilder/formCliente.fxml"));
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sceneBuilder/formCliente.fxml"));
-
-            URL url = getClass().getResource("/sceneBuilder/formCliente.fxml");
-            System.out.println("Caminho encontrado: " + url);
 
             Scene scene = new Scene(loader.load());
             Stage formCliente = new Stage();

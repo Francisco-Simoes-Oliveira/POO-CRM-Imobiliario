@@ -2,6 +2,9 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import modelo.Cliente;
+import service.ClienteService;
 import view.MainApp;
 
 public class FormClienteController {
@@ -17,7 +20,15 @@ public class FormClienteController {
             MainApp.mostrarAlerta("Erro", "O campo nome e CPF são obrigatórios!");
             return;
         }
-        // lógica de salvar
+        if(!nomeField.getText().isEmpty() && !cpfField.getText().isEmpty()) {
+            if (Cliente.validarCpf(cpfField.getText())) {
+                ClienteService service = new ClienteService();
+                service.add(nomeField.getText(), cpfField.getText(),
+                        emailField.getText(), telefoneField.getText());
+                Stage stage = (Stage) nomeField.getScene().getWindow();
+                stage.close();
+            }else MainApp.mostrarAlerta("Erro", "CPF inválido!");;
+        }
     }
 }
 
