@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<BorderPane fx:id="root" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainAppController">
+<BorderPane fx:id="root" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainAppController">
 
    <!-- Sidebar -->
    <left>
@@ -24,12 +23,12 @@
             <padding>
                <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Button styleClass="nav-button" text="Imóveis" />
-            <Button styleClass="nav-button" text="Clientes" />
-            <Button styleClass="nav-button" text="Visitas" />
+            <Button onAction="#abrirImoveis" styleClass="nav-button" text="Imóveis" />
+            <Button onAction="#abrirClientes" styleClass="nav-button" text="Clientes" />
+            <Button onAction="#abrirVisitas" styleClass="nav-button" text="Visitas" />
             <Button styleClass="nav-button" text="Propostas" />
             <Button styleClass="nav-button" text="Contratos" />
-            <Button styleClass="nav-button" text="Relatórios" />
+            <Button onAction="#abrirRelatorios" styleClass="nav-button" text="Relatórios" />
          </VBox>
 
          <VBox alignment="BOTTOM_LEFT" spacing="5.0">
@@ -59,7 +58,7 @@
 
    <!-- Main content -->
    <center>
-      <StackPane fx:id="conteudo"/>
+      <StackPane fx:id="conteudo" />
       <!--
       <VBox spacing="20">
          <padding>

@@ -3,38 +3,45 @@ package controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.application.Platform;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainAppController extends BaseController {
+public class MainAppController extends BaseController implements Initializable {
 
     @FXML
     private StackPane conteudo;
 
-    @FXML
-    private void initialize() {
-        // ao iniciar, carrega a tela de imóveis por padrão
-        trocarTela("/scaneBuilder/ClientesView.fxml");
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Platform.runLater(() -> {
+            setConteudo(conteudo);
+            trocarTela("/sceneBuilder/ClientesView.fxml");
+        });
     }
 
     @FXML
     private void abrirImoveis() {
-        trocarTela("/scaneBuilder/ImoveisView.fxml");
+        trocarTela("/sceneBuilder/ImoveisView.fxml");
     }
 
     @FXML
     private void abrirClientes() {
-        trocarTela("/scaneBuilder/ClientesView.fxml");
+        trocarTela("/sceneBuilder/ClientesView.fxml");
     }
 
     @FXML
     private void abrirVisitas() {
-        trocarTela("/scaneBuilder/VisitasView.fxml");
+        trocarTela("/sceneBuilder/VisitasView.fxml");
     }
 
     @FXML
     private void abrirRelatorios() {
-        trocarTela("/scaneBuilder/RelatoriosView.fxml");
+        trocarTela("/sceneBuilder/RelatoriosView.fxml");
     }
     @FXML
     private Button Sair;

@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import java.io.IOException;
+import java.net.URL;
 
 public abstract class BaseController {
 
@@ -15,10 +16,14 @@ public abstract class BaseController {
 
     protected void trocarTela(String caminhoFXML) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoFXML));
+            URL fxmlUrl = getClass().getResource(caminhoFXML);
+            if (fxmlUrl == null) {
+                throw new IllegalArgumentException("Arquivo FXML não encontrado: " + caminhoFXML);
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
             Node novaTela = loader.load();
 
-            // vincula o mesmo StackPane ao novo controller
             Object controller = loader.getController();
             if (controller instanceof BaseController baseCtrl) {
                 baseCtrl.setConteudo(conteudo);

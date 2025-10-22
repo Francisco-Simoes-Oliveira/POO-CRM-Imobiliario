@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:id="root" fx:controller="controller.ClientesController" stylesheets="/css/clienteStyle.css">
+<BorderPane fx:id="root" stylesheets="/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
 
     <!-- Sidebar -->
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
 
-        <VBox spacing="20" padding="20.">
             <!-- Título e botão-->
-            <HBox alignment="CENTER_LEFT" spacing="10.">
-                <Label text="Clientes" styleClass="section-title"/>
-                <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="➕ Novo Cliente" styleClass="primary-button"/>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label styleClass="section-title" text="Clientes">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></Label>
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button onAction="#abrirNovoClienteModal" styleClass="primary-button" text="➕ Novo Cliente" />
             </HBox>
 
             <!-- Tabela de Clientes-->
-            <TableView fx:id="tabelaClientes" prefHeight="400">
+            <TableView fx:id="tabelaClientes" prefHeight="400" prefWidth="800.0">
                 <columns>
-                    <TableColumn text="Nome" prefWidth="150"/>
-                    <TableColumn text="E-mail" prefWidth="200"/>
-                    <TableColumn text="Telefone" prefWidth="150"/>
-                    <TableColumn text="Status do Interesse" prefWidth="150"/>
-                    <TableColumn text="Corretor Responsável" prefWidth="150"/>
+                    <TableColumn prefWidth="150" text="Nome" />
+                    <TableColumn prefWidth="200" text="E-mail" />
+                    <TableColumn prefWidth="150" text="Telefone" />
+                    <TableColumn prefWidth="150" text="Status do Interesse" />
+                    <TableColumn prefWidth="150" text="Corretor Responsável" />
                 </columns>
             </TableView>
         </VBox>
+    </center>
 </BorderPane>
