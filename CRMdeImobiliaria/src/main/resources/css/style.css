@@ -48,10 +48,7 @@
     -fx-background-color: #eaeaea;
 }
 
-.nav-button-active {
-    -fx-background-color: #13a4ec33;
-    -fx-text-fill: #13a4ec;
-}
+
 
 /* Header */
 .header {

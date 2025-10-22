@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.*?>
 
-<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml"
-            stylesheets="/css/style.css">
+<BorderPane fx:id="root" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controller.MainAppController">
 
    <!-- Sidebar -->
    <left>
-      <VBox spacing="10" prefWidth="220" styleClass="sidebar">
+      <VBox prefWidth="220" spacing="10" styleClass="sidebar">
          <HBox alignment="CENTER_LEFT" spacing="10">
             <padding>
-               <Insets top="10" right="10" bottom="10" left="10"/>
+               <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Circle radius="15" style="-fx-fill: #13a4ec;"/>
-            <Label text="CRM Imobiliário" styleClass="logo-label"/>
+            <Circle radius="15" style="-fx-fill: #13a4ec;" />
+            <Label styleClass="logo-label" text="CRM Imobiliário" />
          </HBox>
 
          <VBox spacing="5">
             <padding>
-               <Insets top="10" right="10" bottom="10" left="10"/>
+               <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Button text="Imóveis" styleClass="nav-button-active"/>
-            <Button text="Clientes" styleClass="nav-button"/>
-            <Button text="Visitas" styleClass="nav-button"/>
-            <Button text="Propostas" styleClass="nav-button"/>
-            <Button text="Contratos" styleClass="nav-button"/>
-            <Button text="Relatórios" styleClass="nav-button"/>
+            <Button styleClass="nav-button" text="Imóveis" />
+            <Button styleClass="nav-button" text="Clientes" />
+            <Button styleClass="nav-button" text="Visitas" />
+            <Button styleClass="nav-button" text="Propostas" />
+            <Button styleClass="nav-button" text="Contratos" />
+            <Button styleClass="nav-button" text="Relatórios" />
          </VBox>
 
-         <VBox alignment="BOTTOM_LEFT">
+         <VBox alignment="BOTTOM_LEFT" spacing="5.0">
             <padding>
-               <Insets top="10" right="10" bottom="10" left="10"/>
+               <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Button text="Configurações" styleClass="nav-button"/>
+            <Button styleClass="nav-button" text="Configurações" />
+            <Button mnemonicParsing="false" onAction="#onSairClick" text="Sair" />
          </VBox>
       </VBox>
    </left>
@@ -46,14 +46,14 @@
    <top>
       <HBox alignment="CENTER_RIGHT" spacing="20" styleClass="header">
          <padding>
-            <Insets top="10" right="10" bottom="10" left="10"/>
+            <Insets bottom="10" left="10" right="10" top="10" />
          </padding>
-         <Label text="Dashboard" styleClass="header-title" HBox.hgrow="ALWAYS"/>
+         <Label styleClass="header-title" text="Dashboard" HBox.hgrow="ALWAYS" />
 
-         <TextField promptText="Buscar..." prefWidth="200" styleClass="search-field"/>
+         <TextField prefWidth="200" promptText="Buscar..." styleClass="search-field" />
 
-         <Button styleClass="icon-button" text="🔔"/>
-         <ImageView fitWidth="40" fitHeight="40" styleClass="avatar"/>
+         <Button styleClass="icon-button" text="🔔" />
+         <ImageView fitHeight="40" fitWidth="40" styleClass="avatar" />
       </HBox>
    </top>
 
@@ -61,36 +61,48 @@
    <center>
       <VBox spacing="20">
          <padding>
-            <Insets top="20" right="20" bottom="20" left="20"/>
+            <Insets bottom="20" left="20" right="20" top="20" />
          </padding>
 
          <!-- Cards -->
          <HBox spacing="15">
             <VBox alignment="CENTER" styleClass="card">
-               <Label text="Total de Imóveis" styleClass="card-title"/>
-               <Label text="120" styleClass="card-value"/>
+               <Label styleClass="card-title" text="Total de Imóveis" />
+               <Label styleClass="card-value" text="120" />
             </VBox>
 
             <VBox alignment="CENTER" styleClass="card">
-               <Label text="Propostas em Andamento" styleClass="card-title"/>
-               <Label text="35" styleClass="card-value"/>
+               <Label styleClass="card-title" text="Propostas em Andamento" />
+               <Label styleClass="card-value" text="35" />
             </VBox>
 
             <VBox alignment="CENTER" styleClass="card">
-               <Label text="Contratos Fechados" styleClass="card-title"/>
-               <Label text="15" styleClass="card-value"/>
+               <Label styleClass="card-title" text="Contratos Fechados" />
+               <Label styleClass="card-value" text="15" />
             </VBox>
 
-            <VBox alignment="CENTER" styleClass="card">
-               <Label text="Taxa de Conversão" styleClass="card-title"/>
-               <Label text="12.5%" styleClass="card-value"/>
+            <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="card">
+               <Label styleClass="card-title" text="Taxa de Conversão" />
+               <Label styleClass="card-value" text="12.5%" />
             </VBox>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <BarChart title="VENDAS NO ULTIMOS MESES">
+                 <xAxis>
+                   <CategoryAxis side="BOTTOM" />
+                 </xAxis>
+                 <yAxis>
+                   <NumberAxis side="LEFT" />
+                 </yAxis>
+               </BarChart>
+            </children>
          </HBox>
 
          <!-- Recent Activities -->
          <VBox spacing="10" styleClass="card">
-            <Label text="Atividades Recentes" styleClass="section-title"/>
-            <ListView fx:id="listAtividades"/>
+            <Label styleClass="section-title" text="Atividades Recentes" />
+            <ListView fx:id="listAtividades" />
          </VBox>
 
       </VBox>
