@@ -1,0 +1,45 @@
+.sidebar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdcdc;
+}
+
+.logo-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.nav-button, .nav-button-active {
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-text-fill: #333;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.nav-button-active {
+    -fx-background-color: #13a4ec33;
+    -fx-text-fill: #13a4ec;
+}
+
+.header {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdcdc;
+}
+
+.search-field {
+    -fx-background-radius: 8;
+    -fx-padding: 6 10;
+}
+
+.primary-button {
+    -fx-background-color: #13a4ec;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+    -fx-font-weight: bold;
+}
+
+.section-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}

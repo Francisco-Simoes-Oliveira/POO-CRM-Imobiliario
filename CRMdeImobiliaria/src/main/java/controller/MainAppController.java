@@ -4,13 +4,38 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 
-public class MainAppController {
+public class MainAppController extends BaseController {
 
     @FXML
-    private TextField campoNome;
+    private StackPane conteudo;
 
+    @FXML
+    private void initialize() {
+        // ao iniciar, carrega a tela de imóveis por padrão
+        trocarTela("/scaneBuilder/ClientesView.fxml");
+    }
+
+    @FXML
+    private void abrirImoveis() {
+        trocarTela("/scaneBuilder/ImoveisView.fxml");
+    }
+
+    @FXML
+    private void abrirClientes() {
+        trocarTela("/scaneBuilder/ClientesView.fxml");
+    }
+
+    @FXML
+    private void abrirVisitas() {
+        trocarTela("/scaneBuilder/VisitasView.fxml");
+    }
+
+    @FXML
+    private void abrirRelatorios() {
+        trocarTela("/scaneBuilder/RelatoriosView.fxml");
+    }
     @FXML
     private Button Sair;
 

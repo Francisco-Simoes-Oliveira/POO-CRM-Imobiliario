@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:id="root" fx:controller="controller.ClientesController" stylesheets="/css/clienteStyle.css">
+
+    <!-- Sidebar -->
+
+        <VBox spacing="20" padding="20.">
+            <!-- Título e botão-->
+            <HBox alignment="CENTER_LEFT" spacing="10.">
+                <Label text="Clientes" styleClass="section-title"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button text="➕ Novo Cliente" styleClass="primary-button"/>
+            </HBox>
+
+            <!-- Tabela de Clientes-->
+            <TableView fx:id="tabelaClientes" prefHeight="400">
+                <columns>
+                    <TableColumn text="Nome" prefWidth="150"/>
+                    <TableColumn text="E-mail" prefWidth="200"/>
+                    <TableColumn text="Telefone" prefWidth="150"/>
+                    <TableColumn text="Status do Interesse" prefWidth="150"/>
+                    <TableColumn text="Corretor Responsável" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+</BorderPane>

@@ -26,7 +26,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
+
         try {
+
             // debug: ver se o resource existe no classpath
             URL fxmlUrl = getClass().getResource("/sceneBuilder/MainApp.fxml");
             System.out.println("FXML URL -> " + fxmlUrl);
