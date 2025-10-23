@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +42,9 @@ public class ClientesController extends BaseController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sceneBuilder/FormCliente.fxml"));
             Parent root = loader.load();
 
+            FormClienteController controller = loader.getController();
+            controller.setClientesObservable(clientesObservable);
+
             // Cria um novo stage
             Stage modalStage = new Stage();
             modalStage.setTitle("Novo Cliente");
@@ -63,6 +67,7 @@ public class ClientesController extends BaseController {
 
     @FXML
     private TableView<Cliente> tabelaClientes;
+    private ObservableList<Cliente> clientesObservable;
 
     @FXML
     private TableColumn<Cliente, String> colunaNome;
@@ -84,6 +89,8 @@ public class ClientesController extends BaseController {
         colunaStatus.setCellValueFactory(new PropertyValueFactory<>("statusInteresse"));
         colunaCorretor.setCellValueFactory(new PropertyValueFactory<>("corretor"));
 
-        tabelaClientes.setItems(FXCollections.observableArrayList(service.buscarTodos()));
+        clientesObservable = FXCollections.observableArrayList(service.buscarTodos());
+
+        tabelaClientes.setItems(clientesObservable);
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,6 +18,13 @@ public class FormClienteController {
     @FXML private TextField emailField;
     @FXML private TextField telefoneField;
 
+    private ObservableList<Cliente> clientesObservable;
+
+    public void setClientesObservable(ObservableList<Cliente> clientesObservable) {
+        this.clientesObservable = clientesObservable;
+    }
+
+
     @FXML
     private void salvar() {
         if (nomeField.getText().isEmpty() || cpfField.getText().isEmpty()) {
@@ -26,9 +34,13 @@ public class FormClienteController {
         if(!nomeField.getText().isEmpty() && !cpfField.getText().isEmpty()) {
             if (Cliente.validarCpf(cpfField.getText())) {
                 ClienteService service = new ClienteService();
-                service.add(nomeField.getText(), cpfField.getText(),
+                Cliente cliente = new Cliente(nomeField.getText(), cpfField.getText(),
                         emailField.getText(), telefoneField.getText());
+                service.add(cliente);
                 Stage stage = (Stage) nomeField.getScene().getWindow();
+                if (clientesObservable != null) {
+                    clientesObservable.add(cliente);
+                }
                 stage.close();
             }else MainApp.mostrarAlerta("Erro", "CPF inválido!");;
         }

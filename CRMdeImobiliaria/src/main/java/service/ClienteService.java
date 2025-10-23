@@ -8,6 +8,10 @@ import java.util.List;
 public class ClienteService {
     private ClienteDao dao = new ClienteDao();
 
+    public void add(Cliente cliente){
+        dao.add(cliente);
+    }
+
     public void add(String nome, String cpf, String email, String telefone){
         Cliente cliente = new Cliente(nome, cpf, email, telefone);
         dao.add(cliente);
