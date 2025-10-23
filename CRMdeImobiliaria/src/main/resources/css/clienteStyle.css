@@ -43,3 +43,7 @@
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
+
+.btn-salvar{
+    -fx-background-color: #40CF2D;
+}

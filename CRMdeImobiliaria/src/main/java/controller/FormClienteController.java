@@ -7,9 +7,12 @@ import modelo.Cliente;
 import service.ClienteService;
 import view.MainApp;
 
+import java.awt.event.ActionEvent;
+
 public class FormClienteController {
-    @FXML
-    private TextField nomeField;
+    private ClienteService service = new ClienteService();
+
+    @FXML private TextField nomeField;
     @FXML private TextField cpfField;
     @FXML private TextField emailField;
     @FXML private TextField telefoneField;

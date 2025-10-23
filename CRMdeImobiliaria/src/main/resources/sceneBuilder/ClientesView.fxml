@@ -27,11 +27,11 @@
             <!-- Tabela de Clientes-->
             <TableView fx:id="tabelaClientes" prefHeight="400" prefWidth="800.0">
                 <columns>
-                    <TableColumn prefWidth="150" text="Nome" />
-                    <TableColumn prefWidth="200" text="E-mail" />
-                    <TableColumn prefWidth="150" text="Telefone" />
-                    <TableColumn prefWidth="150" text="Status do Interesse" />
-                    <TableColumn prefWidth="150" text="Corretor Responsável" />
+                    <TableColumn fx:id="colunaNome" prefWidth="150" text="Nome" />
+                    <TableColumn fx:id="colunaEmail" prefWidth="200" text="E-mail" />
+                    <TableColumn fx:id="colunaTelefone" prefWidth="150" text="Telefone" />
+                    <TableColumn fx:id="colunaStatus" prefWidth="150" text="Status do Interesse" />
+                    <TableColumn fx:id="colunaCorretor" prefWidth="150" text="Corretor Responsável" />
                 </columns>
             </TableView>
         </VBox>
