@@ -50,7 +50,19 @@
 
 .table-cell {
     -fx-alignment: CENTER;
+    -fx-font-size: 15px;
 }
 .table-column-header {
     -fx-alignment: CENTER; /* opcional, se quiser centralizar o título também */
+}
+
+.edit-button {
+    -fx-background-color: #2196f3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.edit-button:hover {
+    -fx-background-color: #1976d2;
 }

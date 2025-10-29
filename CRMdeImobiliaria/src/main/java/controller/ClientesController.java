@@ -7,9 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -29,8 +27,6 @@ public class ClientesController extends BaseController {
         trocarTela("/view/ImoveisView.fxml");
 
     }
-
-
 
     @FXML
     private Button NovoCliente;
@@ -79,6 +75,8 @@ public class ClientesController extends BaseController {
     private TableColumn<Cliente, String> colunaStatus;
     @FXML
     private TableColumn<Cliente, String> colunaCorretor;
+    @FXML
+    private TableColumn<Cliente, Void> colunaAcoes;
 
     @FXML
     public void initialize() {
@@ -106,5 +104,37 @@ public class ClientesController extends BaseController {
         // 4️⃣ Carrega os dados
         clientesObservable = FXCollections.observableArrayList(service.buscarTodos());
         tabelaClientes.setItems(clientesObservable);
+
+        tabelaClientes.setRowFactory(tv -> {
+            TableRow<Cliente> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    Cliente clienteSelecionado = row.getItem();
+                   // abrirModalEdicao(clienteSelecionado);
+                }
+            });
+            return row;
+        });
+
+        colunaAcoes.setCellFactory(coluna -> new TableCell<>() {
+            private final Button btn = new Button("Editar");
+
+            {
+                btn.getStyleClass().add("edit-button"); // se quiser estilizar no CSS
+                btn.setOnAction(event -> {
+                    Cliente cliente = getTableView().getItems().get(getIndex());
+                    //abrirModalEdicao(cliente);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : btn);
+            }
+        });
+
     }
+
+
 }

@@ -25,4 +25,15 @@ public class ClienteService {
     public List<Cliente> buscarTodos(){
        return dao.buscaTodos();
     }
+
+    public List<Cliente> prencherTabela(){
+        List<Cliente> clientes = buscarTodos();
+
+        for (Cliente cliente : clientes){
+
+        }
+
+
+        return clientes;
+    }
 }

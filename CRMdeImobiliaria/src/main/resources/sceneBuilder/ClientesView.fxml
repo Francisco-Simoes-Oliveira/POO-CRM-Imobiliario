@@ -30,6 +30,7 @@
                     <TableColumn fx:id="colunaTelefone" prefWidth="120" text="Telefone" />
                     <TableColumn fx:id="colunaStatus" prefWidth="120" text="Status" />
                     <TableColumn fx:id="colunaCorretor" prefWidth="120" text="Corretor" />
+                    <TableColumn fx:id="colunaAcoes" text="Ações" prefWidth="100" />
                 </columns>
             </TableView>
         </VBox>

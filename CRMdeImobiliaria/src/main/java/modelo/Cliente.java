@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Table(name = "cliente")
 public class Cliente extends Pessoa{
 
+    @Transient
+    private String nomeCorretor;
+
     public Cliente() {}
 
     public Cliente(String nome, String cpf, String email, String telefone) {
