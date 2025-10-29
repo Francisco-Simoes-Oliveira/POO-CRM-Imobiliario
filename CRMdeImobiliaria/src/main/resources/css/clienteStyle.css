@@ -47,3 +47,10 @@
 .btn-salvar{
     -fx-background-color: #40CF2D;
 }
+
+.table-cell {
+    -fx-alignment: CENTER;
+}
+.table-column-header {
+    -fx-alignment: CENTER; /* opcional, se quiser centralizar o título também */
+}

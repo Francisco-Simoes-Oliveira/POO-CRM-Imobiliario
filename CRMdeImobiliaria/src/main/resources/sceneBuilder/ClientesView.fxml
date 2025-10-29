@@ -5,11 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" stylesheets="/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
-
-    <!-- Sidebar -->
-    <center>
-        <VBox spacing="20.0">
+<BorderPane fx:id="root" stylesheets="/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
+   <top>
+        <VBox spacing="20.0" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
@@ -27,13 +25,13 @@
             <!-- Tabela de Clientes-->
             <TableView fx:id="tabelaClientes" prefHeight="400" prefWidth="800.0">
                 <columns>
-                    <TableColumn fx:id="colunaNome" prefWidth="150" text="Nome" />
-                    <TableColumn fx:id="colunaEmail" prefWidth="200" text="E-mail" />
-                    <TableColumn fx:id="colunaTelefone" prefWidth="150" text="Telefone" />
-                    <TableColumn fx:id="colunaStatus" prefWidth="150" text="Status do Interesse" />
-                    <TableColumn fx:id="colunaCorretor" prefWidth="150" text="Corretor Responsável" />
+                    <TableColumn fx:id="colunaNome" prefWidth="200" text="Nome" />
+                    <TableColumn fx:id="colunaEmail" prefWidth="240" text="E-mail" />
+                    <TableColumn fx:id="colunaTelefone" prefWidth="120" text="Telefone" />
+                    <TableColumn fx:id="colunaStatus" prefWidth="120" text="Status" />
+                    <TableColumn fx:id="colunaCorretor" prefWidth="120" text="Corretor" />
                 </columns>
             </TableView>
         </VBox>
-    </center>
+   </top>
 </BorderPane>
