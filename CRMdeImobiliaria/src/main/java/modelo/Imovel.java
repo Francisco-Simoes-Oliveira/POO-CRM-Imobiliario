@@ -22,13 +22,13 @@ public class Imovel {
 
     @ManyToOne
     @JoinColumn(name = "idCorretor", referencedColumnName = "id")
-    private Corretor Corretor;
+    private Funcionario Funcionario;
 
-    public Imovel(Double preco, Comodos comodos, StatusImovel statusImovel, Corretor corretor) {
+    public Imovel(Double preco, Comodos comodos, StatusImovel statusImovel, Funcionario funcionario) {
         this.preco = preco;
         this.comodos = comodos;
         this.statusImovel = statusImovel;
-        Corretor = corretor;
+        Funcionario = funcionario;
     }
 
     public Long getId() {
@@ -59,11 +59,11 @@ public class Imovel {
         this.statusImovel = statusImovel;
     }
 
-    public Corretor getCorretor() {
-        return Corretor;
+    public Funcionario getCorretor() {
+        return Funcionario;
     }
 
-    public void setCorretor(Corretor corretor) {
-        Corretor = corretor;
+    public void setCorretor(Funcionario funcionario) {
+        Funcionario = funcionario;
     }
 }

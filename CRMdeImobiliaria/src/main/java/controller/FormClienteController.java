@@ -45,6 +45,11 @@ public class FormClienteController {
             }else MainApp.mostrarAlerta("Erro", "CPF inválido!");;
         }
     }
+    @FXML
+    private void cancelar(){
+        Stage stage = (Stage) nomeField.getScene().getWindow();
+        stage.close();
+    }
 }
 
 

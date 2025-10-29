@@ -71,7 +71,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" text="Cancelar">
+            <Button mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

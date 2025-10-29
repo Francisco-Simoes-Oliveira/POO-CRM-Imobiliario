@@ -1,6 +1,7 @@
 package service;
 
 import dao.ClienteDao;
+import dao.FuncionarioDao;
 import modelo.Cliente;
 
 import java.util.List;
@@ -28,11 +29,6 @@ public class ClienteService {
 
     public List<Cliente> prencherTabela(){
         List<Cliente> clientes = buscarTodos();
-
-        for (Cliente cliente : clientes){
-
-        }
-
 
         return clientes;
     }

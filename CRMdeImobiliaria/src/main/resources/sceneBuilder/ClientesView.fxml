@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" stylesheets="/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
+<BorderPane fx:id="root" stylesheets="/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
    <top>
         <VBox spacing="20.0" BorderPane.alignment="CENTER">
             <padding>
@@ -29,8 +29,7 @@
                     <TableColumn fx:id="colunaEmail" prefWidth="240" text="E-mail" />
                     <TableColumn fx:id="colunaTelefone" prefWidth="120" text="Telefone" />
                     <TableColumn fx:id="colunaStatus" prefWidth="120" text="Status" />
-                    <TableColumn fx:id="colunaCorretor" prefWidth="120" text="Corretor" />
-                    <TableColumn fx:id="colunaAcoes" text="Ações" prefWidth="100" />
+                    <TableColumn fx:id="colunaAcoes" prefWidth="100" text="Ações" />
                 </columns>
             </TableView>
         </VBox>

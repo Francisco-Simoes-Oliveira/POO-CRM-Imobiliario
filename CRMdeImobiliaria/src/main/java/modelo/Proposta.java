@@ -17,6 +17,10 @@ public class Proposta {
     private Cliente cliente;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "idFuncionario", nullable = false)
+    private Funcionario funcionario;
+
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idImovel", nullable = false)
     private Imovel imovel;
 

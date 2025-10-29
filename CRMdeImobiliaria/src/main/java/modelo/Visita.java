@@ -18,7 +18,7 @@ public class Visita {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "idCorretor", nullable = false)
-    private Corretor corretor;
+    private Funcionario funcionario;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "idImovel", nullable = false)

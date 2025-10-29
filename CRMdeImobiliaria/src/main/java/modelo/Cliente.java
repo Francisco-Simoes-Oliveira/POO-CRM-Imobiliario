@@ -55,4 +55,11 @@ public class Cliente extends Pessoa{
         return validado;
     }
 
+    public String getNomeCorretor() {
+        return nomeCorretor;
+    }
+
+    public void setNomeCorretor(String nomeCorretor) {
+        this.nomeCorretor = nomeCorretor;
+    }
 }

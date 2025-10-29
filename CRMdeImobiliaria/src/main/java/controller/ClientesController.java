@@ -73,8 +73,7 @@ public class ClientesController extends BaseController {
     private TableColumn<Cliente, String> colunaTelefone;
     @FXML
     private TableColumn<Cliente, String> colunaStatus;
-    @FXML
-    private TableColumn<Cliente, String> colunaCorretor;
+
     @FXML
     private TableColumn<Cliente, Void> colunaAcoes;
 
@@ -85,14 +84,13 @@ public class ClientesController extends BaseController {
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         colunaStatus.setCellValueFactory(new PropertyValueFactory<>("statusInteresse"));
-        colunaCorretor.setCellValueFactory(new PropertyValueFactory<>("corretor"));
+
 
         // 2️⃣ Define tamanhos preferenciais (servem como "proporções")
         colunaNome.setPrefWidth(200);
         colunaEmail.setPrefWidth(240);
         colunaTelefone.setPrefWidth(120);
         colunaStatus.setPrefWidth(120);
-        colunaCorretor.setPrefWidth(120);
 
         // (Opcional) Define tamanhos mínimos para não espremer demais
         colunaNome.setMinWidth(150);
