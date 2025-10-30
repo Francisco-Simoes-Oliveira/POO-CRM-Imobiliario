@@ -1,0 +1,142 @@
+[
+  {
+    "nome": "João da Silva",
+    "cpf": "11144477735",
+    "email": "joao.silva@email.com",
+    "telefone": "11987654321",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Maria Oliveira",
+    "cpf": "98765432100",
+    "email": "maria.oliveira@email.com",
+    "telefone": "11912345678",
+    "status": "DESATIVADO"
+  },
+  {
+    "nome": "Carlos Pereira",
+    "cpf": "12345678909",
+    "email": "carlos.pereira@email.com",
+    "telefone": "21998765432",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Ana Souza",
+    "cpf": "34567890123",
+    "email": "ana.souza@email.com",
+    "telefone": "31999887766",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Fernanda Costa",
+    "cpf": "45678901234",
+    "email": "fernanda.costa@email.com",
+    "telefone": "41988776655",
+    "status": "DESATIVADO"
+  },
+  {
+    "nome": "Paulo Lima",
+    "cpf": "56789012345",
+    "email": "paulo.lima@email.com",
+    "telefone": "81977665544",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Camila Alves",
+    "cpf": "67890123456",
+    "email": "camila.alves@email.com",
+    "telefone": "71966554433",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Rodrigo Santos",
+    "cpf": "78901234567",
+    "email": "rodrigo.santos@email.com",
+    "telefone": "61955443322",
+    "status": "DESATIVADO"
+  },
+  {
+    "nome": "Juliana Ramos",
+    "cpf": "89012345678",
+    "email": "juliana.ramos@email.com",
+    "telefone": "51944332211",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Gabriel Martins",
+    "cpf": "90123456789",
+    "email": "gabriel.martins@email.com",
+    "telefone": "41933221100",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Patrícia Diniz",
+    "cpf": "26065548074",
+    "email": "patricia.diniz@email.com",
+    "telefone": "21987651234",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Rafael Correia",
+    "cpf": "55776263070",
+    "email": "rafael.correia@email.com",
+    "telefone": "11911223344",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Larissa Gomes",
+    "cpf": "19401768007",
+    "email": "larissa.gomes@email.com",
+    "telefone": "31998877654",
+    "status": "DESATIVADO"
+  },
+  {
+    "nome": "Daniel Mello",
+    "cpf": "68802951016",
+    "email": "daniel.mello@email.com",
+    "telefone": "47988776655",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Bianca Nunes",
+    "cpf": "78499252080",
+    "email": "bianca.nunes@email.com",
+    "telefone": "85977665544",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Thiago Borges",
+    "cpf": "29141075043",
+    "email": "thiago.borges@email.com",
+    "telefone": "62966554433",
+    "status": "DESATIVADO"
+  },
+  {
+    "nome": "Vanessa Rocha",
+    "cpf": "08070954002",
+    "email": "vanessa.rocha@email.com",
+    "telefone": "92955443322",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Lúcio Freitas",
+    "cpf": "38458686036",
+    "email": "lucio.freitas@email.com",
+    "telefone": "84944332211",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Marina Queiroz",
+    "cpf": "49508542035",
+    "email": "marina.queiroz@email.com",
+    "telefone": "51933221100",
+    "status": "ATIVO"
+  },
+  {
+    "nome": "Ricardo Menezes",
+    "cpf": "05877478044",
+    "email": "ricardo.menezes@email.com",
+    "telefone": "91922110099",
+    "status": "DESATIVADO"
+  }
+]

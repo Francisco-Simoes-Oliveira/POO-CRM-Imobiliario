@@ -108,7 +108,7 @@ public class ClientesController extends BaseController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
                     Cliente clienteSelecionado = row.getItem();
-                   // abrirModalEdicao(clienteSelecionado);
+                   abrirModalEdicao(clienteSelecionado);
                 }
             });
             return row;
@@ -121,7 +121,7 @@ public class ClientesController extends BaseController {
                 btn.getStyleClass().add("edit-button"); // se quiser estilizar no CSS
                 btn.setOnAction(event -> {
                     Cliente cliente = getTableView().getItems().get(getIndex());
-                    //abrirModalEdicao(cliente);
+                    abrirModalEdicao(cliente);
                 });
             }
 
@@ -136,7 +136,7 @@ public class ClientesController extends BaseController {
 
     private void abrirModalEdicao(Cliente cliente) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/formCliente.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sceneBuilder/FormCliente.fxml"));
             Parent root = loader.load();
 
             // Passa o cliente selecionado para o controlador do modal
@@ -146,6 +146,8 @@ public class ClientesController extends BaseController {
             Stage stage = new Stage();
             stage.setTitle("Editar Cliente");
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(conteudo.getScene().getWindow());
+
             stage.setScene(new Scene(root));
             stage.showAndWait(); // bloqueia até o modal ser fechado
 

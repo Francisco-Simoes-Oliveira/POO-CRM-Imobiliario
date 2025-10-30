@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import modelo.Cliente;
 import modelo.Endereco;
 import modelo.Imovel;
+import modelo.JsonImporter;
 import org.json.JSONObject;
 import service.ClienteService;
 import service.ImovelService;
@@ -26,6 +27,17 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
+
+        ClienteService service = new ClienteService();
+
+        // Se o banco estiver vazio, popula com os dados do JSON
+        if (service.buscarTodos().isEmpty()) {
+            List<Cliente> clientes = JsonImporter.carregarClientes();
+            for (Cliente c : clientes) {
+                service.add(c);
+            }
+            System.out.println("Banco populado com dados do JSON!");
+        }
 
         try {
 
@@ -58,48 +70,6 @@ public class MainApp extends Application {
             System.err.println("RuntimeException ao carregar FXML (verificar fx:controller, campos @FXML, namespaces):");
             ex.printStackTrace();
         }
-    }
-
-
-    private HBox headerPage(BorderPane contentPane,Stage stage){
-        HBox topMenu = new HBox(10); // 10 = espaçamento entre elementos
-        topMenu.setPadding(new Insets(10));
-        topMenu.setStyle("-fx-background-color: #336699;");
-
-        Button btnHome = new Button("Home");
-        Button btnSobre = new Button("Sobre");
-        Button btnSair = new Button("Sair");
-
-        topMenu.getChildren().addAll(btnHome, btnSobre, btnSair);
-
-        // === Ações dos botões ===
-        btnHome.setOnAction(e -> contentPane.setCenter(new Label("Página Inicial")));
-        btnSobre.setOnAction(e -> contentPane.setCenter(new Label("Sobre o programa")));
-        btnSair.setOnAction(e -> stage.close());
-
-        return topMenu;
-    }
-
-    private VBox menuPage(BorderPane contentPane,Stage stage){
-        VBox sideMenu = new VBox(10);
-        sideMenu.setPrefWidth(200);
-
-        sideMenu.setPadding(new Insets(10));
-        sideMenu.setStyle("-fx-background-color: #cccccc;");
-
-        Button btnPagina1 = new Button("Cliente");
-        Button btnPagina2 = new Button("Imovel");
-        Button btnPagina3 = new Button("Página 3");
-
-        sideMenu.getChildren().addAll(btnPagina1, btnPagina2, btnPagina3);
-
-        // === Ações dos botões ===
-        btnPagina1.setOnAction(e -> contentPane.setCenter(listaClientePage(stage)));
-        btnPagina2.setOnAction(e -> contentPane.setCenter(listaImovelPage(stage)));
-        btnPagina3.setOnAction(e -> contentPane.setCenter(new Label("Página 3")));
-
-
-        return sideMenu;
     }
 
     private GridPane listaClientePage(Stage stage) {
