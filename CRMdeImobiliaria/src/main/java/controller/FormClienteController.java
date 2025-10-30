@@ -2,6 +2,7 @@ package controller;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.Cliente;
@@ -17,11 +18,20 @@ public class FormClienteController {
     @FXML private TextField cpfField;
     @FXML private TextField emailField;
     @FXML private TextField telefoneField;
+    @FXML private RadioButton status;
 
+    private Cliente clienteAtual;
     private ObservableList<Cliente> clientesObservable;
 
     public void setClientesObservable(ObservableList<Cliente> clientesObservable) {
         this.clientesObservable = clientesObservable;
+    }
+    public void setCliente(Cliente cliente) {
+        this.clienteAtual = cliente;
+        nomeField.setText(cliente.getNome());
+        emailField.setText(cliente.getEmail());
+        telefoneField.setText(cliente.getTelefone());
+
     }
 
 
@@ -36,7 +46,7 @@ public class FormClienteController {
                 ClienteService service = new ClienteService();
                 Cliente cliente = new Cliente(nomeField.getText(), cpfField.getText(),
                         emailField.getText(), telefoneField.getText());
-                service.add(cliente);
+                service.alter(cliente);
                 Stage stage = (Stage) nomeField.getScene().getWindow();
                 if (clientesObservable != null) {
                     clientesObservable.add(cliente);

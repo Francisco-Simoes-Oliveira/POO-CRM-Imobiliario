@@ -23,6 +23,20 @@ public class ClienteService {
         dao.add(cliente);
     }
 
+    public void alter(Cliente cliente){
+        dao.alter(cliente);
+    }
+
+    public void alter(String nome, String cpf, String email, String telefone){
+        Cliente cliente = new Cliente(nome, cpf, email, telefone);
+        dao.alter(cliente);
+    }
+
+    public void alter(String nome, String cpf){
+        Cliente cliente = new Cliente(nome, cpf, null, null);
+        dao.alter(cliente);
+    }
+
     public List<Cliente> buscarTodos(){
        return dao.buscaTodos();
     }

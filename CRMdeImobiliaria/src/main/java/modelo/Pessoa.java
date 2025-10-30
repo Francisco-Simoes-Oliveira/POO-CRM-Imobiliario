@@ -20,6 +20,9 @@ public abstract class Pessoa {
     @Column(length = 11, nullable = false)
     private String telefone;
 
+    @Column(nullable = false)
+    private StatusPessoa status;
+
     public Pessoa( ) {}
 
     public Pessoa(String nome, String cpf, String email, String telefone) {
@@ -27,11 +30,13 @@ public abstract class Pessoa {
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
+        this.status = StatusPessoa.ATIVO;
     }
 
     public Pessoa(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
+        this.status = StatusPessoa.ATIVO;
     }
 
     public Long getId() {
@@ -68,5 +73,13 @@ public abstract class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public StatusPessoa getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPessoa status) {
+        this.status = status;
     }
 }

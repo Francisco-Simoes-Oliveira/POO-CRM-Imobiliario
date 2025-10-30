@@ -66,3 +66,31 @@
 .edit-button:hover {
     -fx-background-color: #1976d2;
 }
+
+/*FORMS*/
+.radio-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #333;
+}
+
+.radio-button .radio {
+    -fx-background-color: white;
+    -fx-border-color: #28a745;
+    -fx-border-width: 2px;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-padding: 5px;
+}
+
+/* Quando selecionado: bolinha totalmente verde */
+.radio-button:selected .radio {
+    -fx-background-color: #28a745; /* verde preenchido */
+    -fx-border-color: #28a745;
+}
+
+.radio-button .dot {
+    -fx-shape: null;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}

@@ -6,8 +6,7 @@ import javax.persistence.*;
 @Table(name = "cliente")
 public class Cliente extends Pessoa{
 
-    @Transient
-    private String nomeCorretor;
+
 
     public Cliente() {}
 
@@ -55,11 +54,4 @@ public class Cliente extends Pessoa{
         return validado;
     }
 
-    public String getNomeCorretor() {
-        return nomeCorretor;
-    }
-
-    public void setNomeCorretor(String nomeCorretor) {
-        this.nomeCorretor = nomeCorretor;
-    }
 }

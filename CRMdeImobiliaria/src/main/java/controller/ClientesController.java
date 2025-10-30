@@ -83,7 +83,7 @@ public class ClientesController extends BaseController {
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        colunaStatus.setCellValueFactory(new PropertyValueFactory<>("statusInteresse"));
+        colunaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
 
         // 2️⃣ Define tamanhos preferenciais (servem como "proporções")
@@ -134,5 +134,26 @@ public class ClientesController extends BaseController {
 
     }
 
+    private void abrirModalEdicao(Cliente cliente) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/formCliente.fxml"));
+            Parent root = loader.load();
+
+            // Passa o cliente selecionado para o controlador do modal
+            FormClienteController controller = loader.getController();
+            controller.setCliente(cliente); // você cria esse método no FormClienteController
+
+            Stage stage = new Stage();
+            stage.setTitle("Editar Cliente");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); // bloqueia até o modal ser fechado
+
+            // Atualiza a tabela depois que o modal fecha
+            tabelaClientes.setItems(FXCollections.observableArrayList(service.buscarTodos()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
