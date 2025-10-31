@@ -66,6 +66,8 @@ public class ClientesController extends BaseController {
     private ObservableList<Cliente> clientesObservable;
 
     @FXML
+    private TableColumn<Cliente, String> colunaId;
+    @FXML
     private TableColumn<Cliente, String> colunaNome;
     @FXML
     private TableColumn<Cliente, String> colunaEmail;
@@ -80,6 +82,7 @@ public class ClientesController extends BaseController {
     @FXML
     public void initialize() {
         // 1️⃣ Vincula cada coluna à propriedade correspondente da classe Cliente
+        colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
@@ -87,6 +90,7 @@ public class ClientesController extends BaseController {
 
 
         // 2️⃣ Define tamanhos preferenciais (servem como "proporções")
+        colunaId.setPrefWidth(60);
         colunaNome.setPrefWidth(200);
         colunaEmail.setPrefWidth(240);
         colunaTelefone.setPrefWidth(120);
