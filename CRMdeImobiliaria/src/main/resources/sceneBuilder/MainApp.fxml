@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<BorderPane fx:id="root" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainAppController">
+<BorderPane fx:id="root" stylesheets="@/css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainAppController">
 
    <!-- Sidebar -->
    <left>
@@ -59,54 +59,5 @@
    <!-- Main content -->
    <center>
       <StackPane fx:id="conteudo" />
-      <!--
-      <VBox spacing="20">
-         <padding>
-            <Insets bottom="20" left="20" right="20" top="20" />
-         </padding>
-
-         <!- Cards
-         <HBox spacing="15">
-            <VBox alignment="CENTER" styleClass="card">
-               <Label styleClass="card-title" text="Total de Imóveis" />
-               <Label styleClass="card-value" text="120" />
-            </VBox>
-
-            <VBox alignment="CENTER" styleClass="card">
-               <Label styleClass="card-title" text="Propostas em Andamento" />
-               <Label styleClass="card-value" text="35" />
-            </VBox>
-
-            <VBox alignment="CENTER" styleClass="card">
-               <Label styleClass="card-title" text="Contratos Fechados" />
-               <Label styleClass="card-value" text="15" />
-            </VBox>
-
-            <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="card">
-               <Label styleClass="card-title" text="Taxa de Conversão" />
-               <Label styleClass="card-value" text="12.5%" />
-            </VBox>
-         </HBox>
-         <HBox prefHeight="100.0" prefWidth="200.0">
-            <children>
-               <BarChart title="VENDAS NO ULTIMOS MESES">
-                 <xAxis>
-                   <CategoryAxis side="BOTTOM" />
-                 </xAxis>
-                 <yAxis>
-                   <NumberAxis side="LEFT" />
-                 </yAxis>
-               </BarChart>
-            </children>
-         </HBox>
-
-         <!- Recent Activities
-         <VBox spacing="10" styleClass="card">
-            <Label styleClass="section-title" text="Atividades Recentes" />
-            <ListView fx:id="listAtividades" />
-         </VBox>
-
-      </VBox>
-      -->
    </center>
 </BorderPane>

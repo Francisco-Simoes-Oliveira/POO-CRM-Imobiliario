@@ -28,8 +28,11 @@ public class ClientesController extends BaseController {
 
     }
 
-    @FXML
-    private Button NovoCliente;
+    @FXML private Button NovoCliente;
+    @FXML private Button btnPesquisa;
+    @FXML private ComboBox<String> comboFiltro;
+    @FXML private TextField campoPesquisa;
+
 
     @FXML
     private void abrirNovoClienteModal() {
@@ -61,6 +64,32 @@ public class ClientesController extends BaseController {
         }
     }
 
+    public void pesquisar(){
+        String filtro = comboFiltro.getValue();
+        String termo = campoPesquisa.getText().toLowerCase();
+
+        ObservableList<Cliente> filtrados = clientesObservable.filtered(cliente -> {
+            if (termo.isEmpty()) return true;
+
+            switch (filtro) {
+                case "Nome":
+                    return cliente.getNome().toLowerCase().contains(termo);
+                case "CPF":
+                    return cliente.getCpf().contains(termo);
+                case "Email":
+                    return cliente.getEmail() != null && cliente.getEmail().toLowerCase().contains(termo);
+                case "Telefone":
+                    return cliente.getTelefone().contains(termo);
+                case "Status":
+                    return cliente.getStatus().toString().toLowerCase().contains(termo);
+                default:
+                    return false;
+            }
+        });
+
+        tabelaClientes.setItems(filtrados);
+    }
+
     @FXML
     private TableView<Cliente> tabelaClientes;
     private ObservableList<Cliente> clientesObservable;
@@ -81,6 +110,9 @@ public class ClientesController extends BaseController {
 
     @FXML
     public void initialize() {
+        comboFiltro.getSelectionModel().selectFirst(); // Seleciona "Nome" por padrão
+
+
         // 1️⃣ Vincula cada coluna à propriedade correspondente da classe Cliente
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -103,9 +135,10 @@ public class ClientesController extends BaseController {
         // 3️⃣ Ativa o redimensionamento automático das colunas
         tabelaClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
-        // 4️⃣ Carrega os dados
-        clientesObservable = FXCollections.observableArrayList(service.buscarTodos());
-        tabelaClientes.setItems(clientesObservable);
+        // 4️⃣ Carrega os
+        carregarClientes();
+
+        campoPesquisa.textProperty().addListener((obs, oldVal, newVal) -> pesquisar());
 
         tabelaClientes.setRowFactory(tv -> {
             TableRow<Cliente> row = new TableRow<>();
@@ -138,7 +171,12 @@ public class ClientesController extends BaseController {
 
     }
 
-    private void abrirModalEdicao(Cliente cliente) {
+    private void carregarClientes() {
+        clientesObservable = FXCollections.observableArrayList(service.buscarTodos());
+        tabelaClientes.setItems(clientesObservable);
+    }
+
+        private void abrirModalEdicao(Cliente cliente) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sceneBuilder/FormCliente.fxml"));
             Parent root = loader.load();

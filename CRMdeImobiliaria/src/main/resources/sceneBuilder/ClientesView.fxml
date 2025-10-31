@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<BorderPane fx:id="root" stylesheets="/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
+<BorderPane fx:id="root" stylesheets="@/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
    <top>
         <VBox spacing="20.0" BorderPane.alignment="CENTER">
             <padding>
@@ -21,19 +21,32 @@
                   <Font name="Arial Black" size="15.0" />
                </font></Label>
                 <Pane maxWidth="100.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-                <HBox spacing="10">
+                 <ComboBox fx:id="comboFiltro" prefHeight="25.0" prefWidth="85.0">
+                     <items>
+                         <FXCollections fx:factory="observableArrayList">
+                             <String fx:value="Nome" />
+                             <String fx:value="CPF" />
+                             <String fx:value="Email" />
+                             <String fx:value="Telefone" />
+                             <String fx:value="Status" />
+                         </FXCollections>
+                     </items>
+                 </ComboBox>
+                <HBox alignment="CENTER_LEFT" spacing="10">
                     <TextField fx:id="campoPesquisa" promptText="Pesquisar cliente..." />
-                    <ComboBox fx:id="filtroStatus" prefWidth="150">
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="Todos" />
-                                <String fx:value="Ativo" />
-                                <String fx:value="Desativado" />
-                            </FXCollections>
-                        </items>
-                    </ComboBox>
-                </HBox>>
-                <Button onAction="#abrirNovoClienteModal" styleClass="primary-button" text="➕ Novo Cliente" />
+               <Button fx:id="btnPesquisa" mnemonicParsing="false" onAction="#pesquisar" text="alou" textAlignment="CENTER">
+                  <HBox.margin>
+                     <Insets left="-5.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Button>
+                </HBox>
+                <Button fx:id="NovoCliente" onAction="#abrirNovoClienteModal" styleClass="primary-button" text="➕ Novo Cliente">
+               <HBox.margin>
+                  <Insets left="250.0" />
+               </HBox.margin></Button>
             </HBox>
 
             <!-- Tabela de Clientes-->
