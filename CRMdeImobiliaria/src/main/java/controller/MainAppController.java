@@ -43,6 +43,8 @@ public class MainAppController extends BaseController implements Initializable {
     private void abrirRelatorios() {
         trocarTela("/sceneBuilder/RelatoriosView.fxml");
     }
+
+
     @FXML
     private Button Sair;
 

@@ -11,6 +11,9 @@ public class Imovel {
     private Long id;
 
     //ENDEREÇO FICA PARA SER FEITA DEPOIS
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idEndereco", referencedColumnName = "id")
+    private Endereco endereco;
 
     private Double preco;
 

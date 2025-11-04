@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
@@ -34,5 +35,10 @@ public abstract class BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void abrirConfiguracao() {
+        trocarTela("/sceneBuilder/ConfiguracaoView.fxml");
     }
 }

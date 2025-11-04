@@ -29,7 +29,6 @@ public class ClientesController extends BaseController {
     }
 
     @FXML private Button NovoCliente;
-    @FXML private Button btnPesquisa;
     @FXML private ComboBox<String> comboFiltro;
     @FXML private TextField campoPesquisa;
 

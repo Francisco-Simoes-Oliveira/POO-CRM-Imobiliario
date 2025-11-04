@@ -28,16 +28,6 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
 
-        ClienteService service = new ClienteService();
-
-        // Se o banco estiver vazio, popula com os dados do JSON
-        if (service.buscarTodos().isEmpty()) {
-            List<Cliente> clientes = JsonImporter.carregarClientes();
-            for (Cliente c : clientes) {
-                service.add(c);
-            }
-            System.out.println("Banco populado com dados do JSON!");
-        }
 
         try {
 
