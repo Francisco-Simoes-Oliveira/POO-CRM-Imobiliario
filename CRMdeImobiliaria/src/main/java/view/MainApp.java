@@ -11,12 +11,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Cliente;
-import modelo.Endereco;
-import modelo.Imovel;
-import modelo.JsonImporter;
-import org.json.JSONObject;
 import service.ClienteService;
-import service.ImovelService;
 
 
 import java.io.IOException;
