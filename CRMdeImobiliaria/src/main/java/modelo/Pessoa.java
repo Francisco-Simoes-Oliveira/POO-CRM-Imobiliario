@@ -20,6 +20,7 @@ public abstract class Pessoa {
     @Column(length = 11, nullable = false)
     private String telefone;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatusPessoa status;
 

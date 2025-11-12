@@ -10,7 +10,7 @@ public class Imovel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //ENDEREÇO FICA PARA SER FEITA DEPOIS
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idEndereco", referencedColumnName = "id")
     private Endereco endereco;
@@ -21,13 +21,17 @@ public class Imovel {
     @JoinColumn(name = "idComodos", referencedColumnName = "id")
     private Comodos comodos;
 
+    @Enumerated(EnumType.STRING)
     private StatusImovel statusImovel;
 
     @ManyToOne
     @JoinColumn(name = "idCorretor", referencedColumnName = "id")
     private Funcionario Funcionario;
 
-    public Imovel(Double preco, Comodos comodos, StatusImovel statusImovel, Funcionario funcionario) {
+    public Imovel() {}
+
+    public Imovel(Endereco endereco, Double preco, Comodos comodos, StatusImovel statusImovel, Funcionario funcionario) {
+        this.endereco = endereco;
         this.preco = preco;
         this.comodos = comodos;
         this.statusImovel = statusImovel;

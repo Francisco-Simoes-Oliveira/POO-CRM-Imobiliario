@@ -15,7 +15,10 @@ public class Comodos{
     private int sala;
     private int garagem;
 
-    public Comodos( int quarto, int banheiro, int cozinha, int sala, int garagem) {
+    public Comodos() {
+    }
+
+    public Comodos(int quarto, int banheiro, int cozinha, int sala, int garagem) {
         this.quarto = quarto;
         this.banheiro = banheiro;
         this.cozinha = cozinha;

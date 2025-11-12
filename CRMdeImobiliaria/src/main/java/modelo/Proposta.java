@@ -28,7 +28,21 @@ public class Proposta {
 
     private LocalDateTime horarioDeEnvio;
 
+    @Enumerated(EnumType.STRING)
     private StatusProposta statusProposta;
 
     private LocalDate prazoResposta;
+
+    public Proposta() {
+    }
+
+    public Proposta(Cliente cliente, Funcionario funcionario, Imovel imovel, Double valorProposto, LocalDateTime horarioDeEnvio, StatusProposta statusProposta, LocalDate prazoResposta) {
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.imovel = imovel;
+        this.valorProposto = valorProposto;
+        this.horarioDeEnvio = horarioDeEnvio;
+        this.statusProposta = statusProposta;
+        this.prazoResposta = prazoResposta;
+    }
 }

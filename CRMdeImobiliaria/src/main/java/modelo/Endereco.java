@@ -23,7 +23,15 @@ public class Endereco {
     private String cidade;
     private String uf;
 
+    public Endereco() {
+    }
 
+    public Endereco(String logradouro, String bairro, String cidade, String uf) {
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+    }
 
     public static JSONObject buscaViaCep(String cep) {
         try {
