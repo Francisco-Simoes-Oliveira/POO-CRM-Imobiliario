@@ -17,7 +17,7 @@ public abstract class Pessoa {
     @Column(length = 200, nullable = true)
     private String email;
 
-    @Column(length = 11, nullable = false)
+    @Column(length = 11, nullable = true)
     private String telefone;
 
     @Enumerated(EnumType.STRING)
@@ -32,6 +32,12 @@ public abstract class Pessoa {
         this.email = email;
         this.telefone = telefone;
         this.status = StatusPessoa.ATIVO;
+    }
+
+    public Pessoa(String nome, String cpf,String telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
     }
 
     public Pessoa(String nome, String cpf) {

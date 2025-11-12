@@ -41,10 +41,10 @@ public class ConfiguracaoController {
         }
 
         if (serviceFunc.buscarTodos().isEmpty()){
-           serviceFunc.add(new Funcionario("Daniel Alves", "00000000000", cargoService.buscarPorNome("Corretor")));
-           serviceFunc.add(new Funcionario("Toninho tornado", "00000000000", cargoService.buscarPorNome("Corretor")));
-           serviceFunc.add(new Funcionario("Zico Corninhos", "00000000000", cargoService.buscarPorNome("Corretor")));
-           serviceFunc.add(new Funcionario("Francisco S", "00000000000", cargoService.buscarPorNome("Gerente")));
+           serviceFunc.add(new Funcionario("Daniel Alves", "00000000000", "44000000000",cargoService.buscarPorNome("Corretor")));
+           serviceFunc.add(new Funcionario("Toninho tornado", "00000000000", "44000000000",cargoService.buscarPorNome("Corretor")));
+           serviceFunc.add(new Funcionario("Zico Corninhos", "00000000000", "44000000000",cargoService.buscarPorNome("Corretor")));
+           serviceFunc.add(new Funcionario("Francisco S", "00000000000", "44000000000",cargoService.buscarPorNome("Gerente")));
         }
 
         if (serviceImovel.buscarTodos().isEmpty()) {

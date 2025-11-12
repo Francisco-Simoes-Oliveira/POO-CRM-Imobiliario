@@ -23,6 +23,11 @@ public class Funcionario extends Pessoa{
         this.cargo = cargo;
     }
 
+    public Funcionario(String nome, String cpf, String telefone, Cargo cargo) {
+        super(nome, cpf, telefone);
+        this.cargo = cargo;
+    }
+
     public Funcionario(String nome, String cpf, Cargo cargo) {
         super(nome, cpf);
         this.cargo = cargo;
