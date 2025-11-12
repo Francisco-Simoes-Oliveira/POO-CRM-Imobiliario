@@ -38,6 +38,7 @@ public abstract class Pessoa {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
+        this.status = StatusPessoa.ATIVO;
     }
 
     public Pessoa(String nome, String cpf) {

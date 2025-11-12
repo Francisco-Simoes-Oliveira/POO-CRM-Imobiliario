@@ -1,7 +1,9 @@
 package modelo;
 
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "imovel")
 public class Imovel {
@@ -26,7 +28,7 @@ public class Imovel {
 
     @ManyToOne
     @JoinColumn(name = "idCorretor", referencedColumnName = "id")
-    private Funcionario Funcionario;
+    private Funcionario funcionario;
 
     public Imovel() {}
 
@@ -35,7 +37,7 @@ public class Imovel {
         this.preco = preco;
         this.comodos = comodos;
         this.statusImovel = statusImovel;
-        Funcionario = funcionario;
+        this.funcionario = funcionario;
     }
 
     public Long getId() {
@@ -66,11 +68,19 @@ public class Imovel {
         this.statusImovel = statusImovel;
     }
 
-    public Funcionario getCorretor() {
-        return Funcionario;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setCorretor(Funcionario funcionario) {
-        Funcionario = funcionario;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" stylesheets="@/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
+<BorderPane fx:id="root" stylesheets="@/css/clienteStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImovelController">
     <top>
         <VBox spacing="20.0" BorderPane.alignment="CENTER">
             <padding>
@@ -19,17 +19,17 @@
                         <Font name="Arial Black" size="15.0" />
                     </font></Label>
                 <Pane HBox.hgrow="ALWAYS" />
-                <Button onAction="#abrirNovoClienteModal" styleClass="primary-button" text="➕ Novo Cliente" />
+                <Button onAction="#abrirNovoImovelModal" styleClass="primary-button" text="➕ Novo Imovel" />
             </HBox>
 
             <!-- Tabela de Clientes-->
             <TableView fx:id="tabelaClientes" prefHeight="400" prefWidth="800.0">
                 <columns>
-                    <TableColumn fx:id="colunaNome" prefWidth="200" text="Nome" />
-                    <TableColumn fx:id="colunaEmail" prefWidth="240" text="E-mail" />
-                    <TableColumn fx:id="colunaTelefone" prefWidth="120" text="Telefone" />
+                    <TableColumn fx:id="colunaNome" prefWidth="83.0" text="Id" />
+                    <TableColumn fx:id="colunaEmail" prefWidth="316.0" text="Logradoro" />
                     <TableColumn fx:id="colunaStatus" prefWidth="120" text="Status" />
-                    <TableColumn fx:id="colunaAcoes" prefWidth="100" text="Ações" />
+               <TableColumn fx:id="colunaImg" prefWidth="89.0" text="Imagens" />
+                    <TableColumn fx:id="colunaAcoes" prefWidth="86.0" text="Ações" />
                 </columns>
             </TableView>
         </VBox>
