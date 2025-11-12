@@ -3,8 +3,14 @@ package util;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import modelo.Cliente;
+import modelo.Imovel;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class JsonImporter{
@@ -18,6 +24,21 @@ public class JsonImporter{
         } catch (Exception e) {
             e.printStackTrace();
             return List.of();
+        }
+    }
+
+    public static List<Imovel> carregarImoveis() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            InputStream inputStream = JsonImporter.class.getResourceAsStream("/json/imoveis.json");
+            if (inputStream == null) {
+                throw new RuntimeException("Arquivo imoveis.json não encontrado!");
+            }
+
+            return Arrays.asList(mapper.readValue(inputStream, Imovel[].class));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
     }
 }

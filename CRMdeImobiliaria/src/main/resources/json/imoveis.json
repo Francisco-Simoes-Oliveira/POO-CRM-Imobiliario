@@ -1,0 +1,146 @@
+[
+  {
+    "endereco": {
+      "logradouro": "Rua das Flores, 123",
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "uf": "SP"
+    },
+    "preco": 450000.00,
+    "comodos": {
+      "quarto": 3,
+      "banheiro": 2,
+      "cozinha": 1,
+      "sala": 1,
+      "garagem": 1
+    },
+    "statusImovel": "DISPONIVEL",
+    "funcionario": { "id": 1 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Avenida Paulista, 900",
+      "bairro": "Bela Vista",
+      "cidade": "São Paulo",
+      "uf": "SP"
+    },
+    "preco": 850000.00,
+    "comodos": {
+      "quarto": 4,
+      "banheiro": 3,
+      "cozinha": 1,
+      "sala": 2,
+      "garagem": 2
+    },
+    "statusImovel": "VENDIDO",
+    "funcionario": { "id": 2 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Rua das Palmeiras, 45",
+      "bairro": "Jardim Botânico",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    "preco": 320000.00,
+    "comodos": {
+      "quarto": 2,
+      "banheiro": 1,
+      "cozinha": 1,
+      "sala": 1,
+      "garagem": 1
+    },
+    "statusImovel": "ALUGADO",
+    "funcionario": { "id": 3 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Rua das Oliveiras, 222",
+      "bairro": "Centro",
+      "cidade": "Curitiba",
+      "uf": "PR"
+    },
+    "preco": 390000.00,
+    "comodos": {
+      "quarto": 3,
+      "banheiro": 2,
+      "cozinha": 1,
+      "sala": 1,
+      "garagem": 1
+    },
+    "statusImovel": "DISPONIVEL",
+    "funcionario": { "id": 1 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Rua Principal, 101",
+      "bairro": "Boa Viagem",
+      "cidade": "Recife",
+      "uf": "PE"
+    },
+    "preco": 275000.00,
+    "comodos": {
+      "quarto": 2,
+      "banheiro": 1,
+      "cozinha": 1,
+      "sala": 1,
+      "garagem": 0
+    },
+    "statusImovel": "DISPONIVEL",
+    "funcionario": { "id": 2 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Rua do Sol, 58",
+      "bairro": "Centro",
+      "cidade": "Fortaleza",
+      "uf": "CE"
+    },
+    "preco": 310000.00,
+    "comodos": {
+      "quarto": 3,
+      "banheiro": 2,
+      "cozinha": 1,
+      "sala": 1,
+      "garagem": 1
+    },
+    "statusImovel": "ALUGADO",
+    "funcionario": { "id": 3 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Rua das Acácias, 12",
+      "bairro": "Ipiranga",
+      "cidade": "São Paulo",
+      "uf": "SP"
+    },
+    "preco": 560000.00,
+    "comodos": {
+      "quarto": 4,
+      "banheiro": 3,
+      "cozinha": 1,
+      "sala": 2,
+      "garagem": 2
+    },
+    "statusImovel": "VENDIDO",
+    "funcionario": { "id": 2 }
+  },
+  {
+    "endereco": {
+      "logradouro": "Avenida Atlântica, 3000",
+      "bairro": "Copacabana",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    "preco": 1200000.00,
+    "comodos": {
+      "quarto": 3,
+      "banheiro": 3,
+      "cozinha": 1,
+      "sala": 2,
+      "garagem": 1
+    },
+    "statusImovel": "DISPONIVEL",
+    "funcionario": { "id": 1 }
+  }
+]

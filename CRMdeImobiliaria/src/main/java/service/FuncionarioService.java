@@ -3,6 +3,8 @@ package service;
 import dao.FuncionarioDao;
 import modelo.Funcionario;
 
+import java.util.List;
+
 
 public class FuncionarioService {
     FuncionarioDao dao = new FuncionarioDao();
@@ -24,4 +26,5 @@ public class FuncionarioService {
     public Funcionario buscaPorId(long id){
         return dao.buscaPorId(id);
     }
+    public List<Funcionario> buscarTodos(){return dao.buscaTodos();}
 }

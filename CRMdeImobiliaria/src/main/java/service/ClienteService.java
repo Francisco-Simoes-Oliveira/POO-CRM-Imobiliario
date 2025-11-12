@@ -6,8 +6,12 @@ import modelo.Cliente;
 
 import java.util.List;
 
-public class ClienteService {
+public class ClienteService extends ServiceImplementacao<ClienteDao,Cliente,Long> {
     private ClienteDao dao = new ClienteDao();
+
+    public ClienteService() {
+        super(Cliente.class);
+    }
 
     public void add(Cliente cliente){
         dao.add(cliente);

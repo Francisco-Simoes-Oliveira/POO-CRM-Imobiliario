@@ -11,6 +11,9 @@ public class ImovelService {
     private ImovelDao dao = new ImovelDao();
 
 
+    public void add(Imovel imovel){
+        dao.add(imovel);
+    }
     public void add(Endereco endereco, Double preco, Comodos comodos, StatusImovel statusImovel, Funcionario funcionario){
         Imovel Imovel = new Imovel(endereco,preco,comodos, statusImovel, funcionario);
         dao.add(Imovel);
