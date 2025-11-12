@@ -1,10 +1,8 @@
 package modelo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+@Entity
 @Table(name = "cargo")
 public class Cargo {
 
@@ -16,4 +14,11 @@ public class Cargo {
 
     private Double salarioBase;
 
+    public Cargo() {
+    }
+
+    public Cargo(String nome, Double salarioBase) {
+        this.nome = nome;
+        this.salarioBase = salarioBase;
+    }
 }

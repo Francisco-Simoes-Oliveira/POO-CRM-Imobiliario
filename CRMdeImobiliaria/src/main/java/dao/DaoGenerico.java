@@ -7,6 +7,7 @@ public interface DaoGenerico<T,ID> {
     void alter(T valor);
     List<T> buscaTodos();
     T buscaPorId(ID id);
+    T buscarPorNome(String nome);
     List<T> buscarPorNomePars(String nome);
     void removerPorId(ID id);
 }

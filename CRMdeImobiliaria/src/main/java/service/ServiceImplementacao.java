@@ -1,8 +1,11 @@
 package service;
 
 import dao.DaoGenerico;
+import modelo.Cliente;
+import modelo.Funcionario;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public abstract class ServiceImplementacao<DAO extends DaoGenerico<T, ID>, T, ID> implements ServiceGenerico<DAO, T, ID> {
 
@@ -15,6 +18,30 @@ public abstract class ServiceImplementacao<DAO extends DaoGenerico<T, ID>, T, ID
                  NoSuchMethodException e) {
             throw new RuntimeException("Erro ao instanciar DAO: " + daoClass.getSimpleName(), e);
         }
+    }
+
+    public void add(T objeto){
+        dao.add(objeto);
+    }
+    public void add(List<T> objetos){
+        for (T obj : objetos){
+            dao.add(obj);
+        }
+    }
+
+    public void alter(T objeto){
+        dao.alter(objeto);
+    }
+
+
+    public List<T> buscarTodos(){
+        return dao.buscaTodos();
+    }
+    public T buscaPorId(ID id){
+        return dao.buscaPorId(id);
+    }
+    public T buscarPorNome(String nome) {
+        return dao.buscarPorNome(nome);
     }
 
 }

@@ -1,30 +1,26 @@
 package service;
 
 import dao.FuncionarioDao;
+import modelo.Cargo;
 import modelo.Funcionario;
 
-import java.util.List;
+
+public class FuncionarioService extends ServiceImplementacao<FuncionarioDao,Funcionario,Long> {
+
+    public FuncionarioService() {
+        super(FuncionarioDao.class);
+    }
 
 
-public class FuncionarioService {
-    FuncionarioDao dao = new FuncionarioDao();
-    
-    public void add(Funcionario funcionario){
+    public void add(String nome, String cpf, String email, String telefone,Cargo cargo){
+        Funcionario funcionario = new Funcionario(nome, cpf, email, telefone, cargo);
         dao.add(funcionario);
     }
 
-    public void add(String nome, String cpf, String email, String telefone){
-        Funcionario funcionario = new Funcionario(nome, cpf, email, telefone);
+    public void add(String nome, String cpf, Cargo cargo){
+        Funcionario funcionario = new Funcionario(nome, cpf, null, null,cargo);
         dao.add(funcionario);
     }
 
-    public void add(String nome, String cpf){
-        Funcionario funcionario = new Funcionario(nome, cpf, null, null);
-        dao.add(funcionario);
-    }
 
-    public Funcionario buscaPorId(long id){
-        return dao.buscaPorId(id);
-    }
-    public List<Funcionario> buscarTodos(){return dao.buscaTodos();}
 }

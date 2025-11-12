@@ -64,6 +64,14 @@ public abstract class DaoImplementacao<T, ID> implements DaoGenerico<T,ID> {
 
         return lista;
     }
+    public T buscarPorNome(String nome){
+        EntityManager em = emf.createEntityManager();
+        String sql = "SELECT t FROM "+tipo.getName()+" t WHERE LOWER(t.nome) = LOWER(:nome)";
+        T obj = em.createQuery(sql, tipo).setParameter("nome", nome).getSingleResult();
+        em.close();
+
+        return obj;
+    }
 
     public void removerPorId(ID id) {
         EntityManager em = emf.createEntityManager();

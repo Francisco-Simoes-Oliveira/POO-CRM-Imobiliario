@@ -7,9 +7,12 @@ import modelo.*;
 
 import java.util.List;
 
-public class ImovelService {
+public class ImovelService extends ServiceImplementacao<ImovelDao,Imovel,Long> {
     private ImovelDao dao = new ImovelDao();
 
+    public ImovelService() {
+        super(ImovelDao.class);
+    }
 
     public void add(Imovel imovel){
         dao.add(imovel);
